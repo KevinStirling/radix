@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfdnsoi2ruy80"]
+
+[ext_resource type="Script" path="res://components/world/terminal/interaction_layer.gd" id="1_1qwj2"]
+[ext_resource type="PackedScene" uid="uid://c0msroe51j4rs" path="res://components/world/terminal/demo/screens/test_ui.tscn" id="2_enyl5"]
+[ext_resource type="Script" path="res://components/world/terminal/demo/test_ui_res.gd" id="3_4inlc"]
+
+[sub_resource type="Resource" id="Resource_nrge8"]
+script = ExtResource("3_4inlc")
+screen_ui = ExtResource("2_enyl5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2s60w"]
+resource_local_to_scene = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ome3d"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1q1y8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8isgi"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tl8a7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eycsv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjnyk"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ome3d")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+emission_operator = 1
+emission_texture = SubResource("ViewportTexture_tl8a7")
+clearcoat_roughness = 0.0
+clearcoat_texture = SubResource("ViewportTexture_8isgi")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+backlight_texture = SubResource("ViewportTexture_1q1y8")
+refraction_enabled = true
+refraction_scale = -0.21
+refraction_texture = SubResource("ViewportTexture_eycsv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lywxf"]
+size = Vector3(1, 1, 0.0560303)
+
+[node name="Screen" type="Node3D"]
+script = ExtResource("1_1qwj2")
+terminal = SubResource("Resource_nrge8")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_2s60w")
+surface_material_override/0 = SubResource("StandardMaterial3D_yjnyk")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0285034)
+shape = SubResource("BoxShape3D_lywxf")

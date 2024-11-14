@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0msroe51j4rs"]
+
+[ext_resource type="Theme" uid="uid://xb40xbi4130y" path="res://components/world/terminal/demo/screens/terminal_ui.tres" id="1_ujpry"]
+[ext_resource type="Script" path="res://components/world/terminal/demo/screens/test_ui.gd" id="2_01ee0"]
+
+[node name="TestUi" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ujpry")
+script = ExtResource("2_01ee0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0.0183423, 0.047967, 0.0227136, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -52.0
+offset_right = 125.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+
+[node name="AirlockButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Open Airlock"
+
+[node name="CommsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+toggle_mode = true
+text = "Open Comms"
+
+[node name="AutoPilotCheck" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Auto Pilot"
+alignment = 1
+
+[node name="VSlider" type="VSlider" parent="HBoxContainer"]
+layout_mode = 2

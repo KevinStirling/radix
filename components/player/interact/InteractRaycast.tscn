@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://x0tw3fwpbdwq"]
+
+[ext_resource type="Script" path="res://components/player/interact/interact.gd" id="1_wxwod"]
+
+[node name="InteractRaycast" type="RayCast3D"]
+visible = false
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource("1_wxwod")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HintLabel" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -11.5
+offset_right = 52.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2

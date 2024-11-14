@@ -1,0 +1,16 @@
+// Game: Generic
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures/base;textures/layers;textures/materials;textures/orrery;textures/pbr;textures/pbr/military-panel;textures/shaders;textures/special"
+// brush 0
+{
+( -192 -64 -16 ) ( -192 -63 -16 ) ( -192 -64 -15 ) base/checkerboard 0 0 0 1 1
+( -64 -176 -16 ) ( -64 -176 -15 ) ( -63 -176 -16 ) base/checkerboard 0 0 0 1 1
+( -64 -64 -16 ) ( -63 -64 -16 ) ( -64 -63 -16 ) base/checkerboard 0 0 0 1 1
+( 64 64 16 ) ( 64 65 16 ) ( 65 64 16 ) base/checkerboard 104.000015 356 0 0.08 0.08
+( 64 192 16 ) ( 65 192 16 ) ( 64 192 17 ) base/checkerboard 0 0 0 1 1
+( 176 64 16 ) ( 176 64 17 ) ( 176 65 16 ) base/checkerboard 0 0 0 1 1
+}
+}

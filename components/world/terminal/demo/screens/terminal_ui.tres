@@ -1,0 +1,104 @@
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://xb40xbi4130y"]
+
+[ext_resource type="FontFile" uid="uid://bk823bn83m4uy" path="res://assets/fonts/IBMPlexMono-Bold.ttf" id="1_frbu2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjf26"]
+bg_color = Color(0.0666667, 0.137255, 0.0941176, 1)
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqjlp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsfvd"]
+bg_color = Color(0.301961, 0.501961, 0.380392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yanjl"]
+bg_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tenpf"]
+bg_color = Color(0.933333, 1, 0.8, 1)
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln3kf"]
+bg_color = Color(0.301961, 0.501961, 0.380392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_il5lk"]
+bg_color = Color(0.301961, 0.501961, 0.380392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5bn7"]
+bg_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l26qj"]
+bg_color = Color(0.933333, 1, 0.8, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.933333, 1, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3q0v"]
+bg_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0njh"]
+bg_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jhgw"]
+bg_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c14ir"]
+bg_color = Color(0.301961, 0.501961, 0.380392, 1)
+
+[resource]
+default_font = ExtResource("1_frbu2")
+Button/colors/font_color = Color(0.301961, 0.501961, 0.380392, 1)
+Button/colors/font_disabled_color = Color(0.188235, 0.364706, 0.258824, 1)
+Button/colors/font_focus_color = Color(0.301961, 0.501961, 0.380392, 1)
+Button/colors/font_hover_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+Button/colors/font_hover_pressed_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+Button/colors/font_pressed_color = Color(0.0156863, 0.0470588, 0.0235294, 1)
+Button/fonts/font = ExtResource("1_frbu2")
+Button/styles/disabled = SubResource("StyleBoxFlat_vjf26")
+Button/styles/focus = SubResource("StyleBoxEmpty_xqjlp")
+Button/styles/hover = SubResource("StyleBoxFlat_qsfvd")
+Button/styles/normal = SubResource("StyleBoxFlat_yanjl")
+Button/styles/pressed = SubResource("StyleBoxFlat_tenpf")
+CheckBox/constants/h_separation = 8
+CheckBox/styles/hover = SubResource("StyleBoxFlat_ln3kf")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_il5lk")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_n5bn7")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_l26qj")
+CheckButton/colors/font_hover_color = Color(0.301961, 0.501961, 0.380392, 1)
+CheckButton/styles/hover = SubResource("StyleBoxFlat_m3q0v")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_m3q0v")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_b0njh")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_3jhgw")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_c14ir")
