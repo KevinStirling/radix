@@ -624,3 +624,9 @@
 "origin" "376 -328 232"
 "is_test" "1"
 }
+// entity 2
+{
+"classname" "button"
+"origin" "328 -328 232"
+"targetName" "_"
+}
