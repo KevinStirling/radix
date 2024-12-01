@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://f4e6movq6yvu"
+path="res://.godot/imported/test_room_standards.map-fd3da58de203a5fda4a114cab2970b94.tres"
+
+[deps]
+
+source_file="res://test_room_standards.map"
+dest_files=["res://.godot/imported/test_room_standards.map-fd3da58de203a5fda4a114cab2970b94.tres"]
+
+[params]
+

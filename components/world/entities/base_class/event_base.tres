@@ -9,9 +9,11 @@ description = "Base class entity for brushes that have triggerable events. Provi
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"name": &"_"
+"name": "_"
 }
-class_property_descriptions = {}
+class_property_descriptions = {
+"name": "name of entity used by event entities to target "
+}
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
 "size": AABB(-8, -8, -8, 8, 8, 8)

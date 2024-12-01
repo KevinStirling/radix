@@ -12,10 +12,10 @@ description = "Basic button point entity"
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"targetName": &""
+"targetName": ""
 }
 class_property_descriptions = {
-"targetName": &"Name of the target of the button"
+"targetName": "Name of the target of the button"
 }
 meta_properties = {
 "color": Color(0.8, 0.8, 0.8, 1),
