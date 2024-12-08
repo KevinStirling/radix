@@ -449,36 +449,14 @@
 }
 // entity 1
 {
-"classname" "light_omni"
-"origin" "88 -72 112"
-}
-// entity 2
+"classname" "trigger_area"
+// brush 0
 {
-"classname" "light_omni"
-"origin" "424 -72 136"
+( 512 96 0 ) ( 512 97 0 ) ( 512 96 1 ) special/trigger [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 512 96 0 ) ( 512 96 1 ) ( 513 96 0 ) special/trigger [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 512 96 0 ) ( 513 96 0 ) ( 512 97 0 ) special/trigger [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 576 192 16 ) ( 576 193 16 ) ( 577 192 16 ) special/trigger [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 576 192 16 ) ( 577 192 16 ) ( 576 192 17 ) special/trigger [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 576 192 16 ) ( 576 192 17 ) ( 576 193 16 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
-// entity 3
-{
-"classname" "light_omni"
-"origin" "424 344 136"
-}
-// entity 4
-{
-"classname" "light_omni"
-"origin" "24 360 112"
-}
-// entity 5
-{
-"classname" "light_omni"
-"origin" "744 360 232"
-}
-// entity 6
-{
-"classname" "light_omni"
-"origin" "752 -104 232"
-}
-// entity 7
-{
-"classname" "light_omni"
-"origin" "192 96 112"
 }

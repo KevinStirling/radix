@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://srtt1s4fnbtj" path="res://textures/metal/metal16.tres" id="8_r6lnq"]
 [ext_resource type="Material" uid="uid://dhubh8xh5upfi" path="res://textures/lights/testlight.tres" id="9_2o7g5"]
 [ext_resource type="Material" path="res://textures/materials/grid_material.tres" id="12_6nske"]
-[ext_resource type="PackedScene" uid="uid://dx3twg33vra01" path="res://components/world/entities/light/omni_light.tscn" id="13_878c2"]
+[ext_resource type="PackedScene" uid="uid://dx3twg33vra01" path="res://components/world/entities/light/light_omni.tscn" id="13_878c2"]
 [ext_resource type="LightmapGIData" uid="uid://cuc2na8diwf57" path="res://assets/lightmaps/test.lmbake" id="16_ot78o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84vgp"]
