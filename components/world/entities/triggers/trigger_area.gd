@@ -22,12 +22,12 @@ func _init() -> void:
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return 
-	GAME.set_targetname(self, targetname)
+	# GAME.set_targetname(self, target)
 
 func _func_godot_apply_properties(props: Dictionary) -> void:
 	target = props["target"] as String 
-	targetfunc = props["targtfunc"] as String 
-	targetname = props["targetname"] as String 
+	targetfunc = props["targetfunc"] as String 
+	# targetname = props["targetname"] as String 
 
 func toggle_collision(toggle: bool) -> void:
 	for child in get_children():
@@ -37,10 +37,12 @@ func toggle_collision(toggle: bool) -> void:
 func use() -> void:
 	if trigger_state == TriggerStates.READY:
 		trigger_state = TriggerStates.USED
+		print("in trigger area USE for target - " + target)
 		toggle_collision(false)
 		GAME.use_targets(self, target)
 
 func _on_ent_entered(ent: Node) -> void:
+	print(ent.get_groups())
 	if trigger_state == TriggerStates.READY:
 		if ent.is_in_group("PLAYER"):
 			call("use")

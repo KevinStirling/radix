@@ -1,12 +1,19 @@
+@tool
+class_name LightOmni
 extends OmniLight3D
 
-@export var func_godot_properties : Dictionary
+@export var targetname : String
 
-# Called when the node enters the scene tree for the first time.
+func _func_godot_apply_properties(props: Dictionary) -> void:
+	LightBase._func_godot_apply_properties(self, props)
+	omni_range = (props["range"] as float) * GAME.INVERSE_SCALE
+	targetname = props["targetname"] as String
+
 func _ready() -> void:
-	print(func_godot_properties.get("is_test"))
-	EventBus.trigger_target_event.connect(toggle)
+	if Engine.is_editor_hint():
+		return
+	GAME.set_targetname(self, targetname)
 
-func toggle(targetName : String) :
-	if targetName == func_godot_properties.get("name"):
-		visible = !visible
+func use() -> void:
+	print("use light")
+	visible = true

@@ -17,10 +17,11 @@ custom_solver_bias = 1.0
 margin = 0.25
 radius = 0.15
 
-[node name="Pawn" type="Node3D" node_paths=PackedStringArray("View", "Camera")]
+[node name="Pawn" type="Node3D" node_paths=PackedStringArray("View", "Camera", "Body")]
 script = ExtResource("1_qx48f")
 View = NodePath("View Control")
 Camera = NodePath("Interpolated Camera")
+Body = NodePath("Body")
 
 [node name="Debug UI" type="Control" parent="." node_paths=PackedStringArray("Controls", "View", "Body", "GameInfo", "ControlsInfo", "ViewInfo", "BodyInfo")]
 layout_mode = 3

@@ -4,6 +4,7 @@ class_name GoldGdt_Pawn extends Node3D
 @export_group("Components")
 @export var View : GoldGdt_View
 @export var Camera : GoldGdt_Camera
+@export var Body : GoldGdt_Body
 
 @export_group("On Ready")
 @export_range(-89, 89) var start_view_pitch : float = 0 ## How the vertical view of the pawn should be rotated on ready. The default value is 0.

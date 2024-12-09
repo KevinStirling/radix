@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx3twg33vra01"]
-
-[ext_resource type="Script" path="res://components/world/entities/light/light_omni.gd" id="1_76uj5"]
-
-[node name="Light" type="OmniLight3D"]
-script = ExtResource("1_76uj5")

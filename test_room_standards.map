@@ -450,13 +450,65 @@
 // entity 1
 {
 "classname" "trigger_area"
+"target" "test_light"
 // brush 0
 {
-( 512 96 0 ) ( 512 97 0 ) ( 512 96 1 ) special/trigger [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 512 96 0 ) ( 512 96 1 ) ( 513 96 0 ) special/trigger [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 512 96 0 ) ( 513 96 0 ) ( 512 97 0 ) special/trigger [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 576 192 16 ) ( 576 193 16 ) ( 577 192 16 ) special/trigger [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( 576 192 16 ) ( 577 192 16 ) ( 576 192 17 ) special/trigger [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( 576 192 16 ) ( 576 192 17 ) ( 576 193 16 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 432 112 0 ) ( 432 113 0 ) ( 432 112 1 ) special/trigger [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 0.25 0.25
+( 384 -80 0 ) ( 384 -80 1 ) ( 385 -80 0 ) special/trigger [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 0.25 0.25
+( 384 112 0 ) ( 385 112 0 ) ( 384 113 0 ) special/trigger [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 0.25 0.25
+( 480 208 16 ) ( 480 209 16 ) ( 481 208 16 ) special/trigger [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 0.25 0.25
+( 480 16 16 ) ( 481 16 16 ) ( 480 16 17 ) special/trigger [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 0.25 0.25
+( 512 208 16 ) ( 512 208 17 ) ( 512 209 16 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 0.25 0.25
 }
+}
+// entity 2
+{
+"classname" "Player"
+"origin" "104 -40 40"
+"flags" "1"
+}
+// entity 3
+{
+"classname" "light_omni"
+"origin" "728 344 168"
+"targetname" "test_light"
+"range" "320"
+"color" "255 255 255"
+"energy" "1"
+"indirect_energy" "1"
+"shadow_bias" "0.1"
+"enabled" "0"
+}
+// entity 4
+{
+"classname" "light_omni"
+"origin" "728 -88 168"
+"targetname" "test_light"
+"range" "320"
+"color" "255 255 255"
+"energy" "1"
+"indirect_energy" "1"
+"shadow_bias" "0.1"
+"enabled" "0"
+}
+// entity 5
+{
+"classname" "trigger_area"
+"target" "counter_light"
+// brush 0
+{
+( 384 192 0 ) ( 384 193 0 ) ( 384 192 1 ) special/trigger [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 384 144 0 ) ( 384 144 1 ) ( 385 144 0 ) special/trigger [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 384 192 0 ) ( 385 192 0 ) ( 384 193 0 ) special/trigger [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 432 336 16 ) ( 432 337 16 ) ( 433 336 16 ) special/trigger [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 432 384 16 ) ( 433 384 16 ) ( 432 384 17 ) special/trigger [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 432 336 16 ) ( 432 336 17 ) ( 432 337 16 ) special/trigger [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 6
+{
+"classname" "light_omni"
+"origin" "408 264 136"
+"targetname" "counter_light"
+"enabled" "0"
 }
