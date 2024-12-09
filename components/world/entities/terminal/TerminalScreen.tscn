@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://cfdnsoi2ruy80"]
 
-[ext_resource type="Script" path="res://components/world/terminal/interaction_layer.gd" id="1_1qwj2"]
-[ext_resource type="PackedScene" uid="uid://c0msroe51j4rs" path="res://components/world/terminal/demo/screens/test_ui.tscn" id="2_enyl5"]
-[ext_resource type="Script" path="res://components/world/terminal/demo/test_ui_res.gd" id="3_4inlc"]
+[ext_resource type="Script" path="res://components/world/entities/terminal/interaction_layer.gd" id="1_1qwj2"]
+[ext_resource type="PackedScene" uid="uid://c0msroe51j4rs" path="res://components/world/entities/terminal/demo/screens/test_ui.tscn" id="2_enyl5"]
+[ext_resource type="Script" path="res://components/world/entities/terminal/demo/test_ui_res.gd" id="3_4inlc"]
 
 [sub_resource type="Resource" id="Resource_nrge8"]
 script = ExtResource("3_4inlc")

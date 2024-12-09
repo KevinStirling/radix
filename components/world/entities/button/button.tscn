@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhjhv24c8lyal"]
 
-[ext_resource type="Script" path="res://components/world/entities/button/func_button.gd" id="1_77fga"]
+[ext_resource type="Script" path="res://entities/funcs/func_button.gd" id="1_77fga"]
 
 [node name="Button" type="Node3D"]
 script = ExtResource("1_77fga")

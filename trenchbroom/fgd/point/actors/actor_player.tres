@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://cwjdwgq68xvi3" path="res://trenchbroom/fgd/base/actor_base.tres" id="1_oh42g"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_pmc26"]
 [ext_resource type="PackedScene" uid="uid://bk1exu1p74wrs" path="res://addons/GoldGdt/Pawn.tscn" id="2_gkxw0"]
-[ext_resource type="Script" path="res://components/player/actor.gd" id="4_011md"]
+[ext_resource type="Script" path="res://entities/actors/actor.gd" id="4_011md"]
 
 [resource]
 script = ExtResource("1_pmc26")

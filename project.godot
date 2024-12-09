@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://scripts/event_bus.gd"
-GAME="*res://scripts/game_manager.gd"
+EventBus="*res://scripts/global/event_bus.gd"
+GAME="*res://scripts/global/game_manager.gd"
 
 [display]
 
@@ -41,8 +41,12 @@ folder_colors={
 "res://components/": "red",
 "res://components/player/": "yellow",
 "res://components/world/": "blue",
+"res://entities/": "teal",
+"res://params/": "orange",
 "res://scenes/": "blue",
-"res://textures/": "purple"
+"res://scripts/": "yellow",
+"res://textures/": "purple",
+"res://trenchbroom/": "teal"
 }
 
 [input]

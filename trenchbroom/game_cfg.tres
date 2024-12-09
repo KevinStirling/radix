@@ -28,6 +28,6 @@ map_formats = Array[Dictionary]([{
 texture_exclusion_patterns = Array[String](["*_albedo", "*_ao", "*_emission", "*_height", "*_metallic", "*_normal", "*_orm", "*_roughness", "*_sss"])
 fgd_file = ExtResource("3_ta3ac")
 entity_scale = "32"
-default_uv_scale = Vector2(1, 1)
+default_uv_scale = Vector2(0.25, 0.25)
 brush_tags = Array[Resource]([ExtResource("1_iyoe3"), ExtResource("2_k73ik")])
 brushface_tags = Array[Resource]([ExtResource("1_harw5"), ExtResource("2_pul2o")])
