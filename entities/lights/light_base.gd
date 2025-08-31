@@ -9,3 +9,4 @@ static func _func_godot_apply_properties(node: Light3D, props: Dictionary) -> vo
 	node.light_color = props["color"] as Color
 	node.light_bake_mode = Light3D.BAKE_DYNAMIC
 	node.visible = props["enabled"] as bool
+	node.shadow_blur = props["blur"] as float

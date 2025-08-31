@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://baijv748fbmtm"
-path.s3tc="res://.godot/imported/grating.png-f884911bb9cad98d6320f2f6feb1792f.s3tc.ctex"
+path="res://.godot/imported/grating.png-f884911bb9cad98d6320f2f6feb1792f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/grating/grating.png"
-dest_files=["res://.godot/imported/grating.png-f884911bb9cad98d6320f2f6feb1792f.s3tc.ctex"]
+dest_files=["res://.godot/imported/grating.png-f884911bb9cad98d6320f2f6feb1792f.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

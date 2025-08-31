@@ -10,6 +10,7 @@ description = ""
 func_godot_internal = false
 base_classes = Array[Resource]([ExtResource("1_mfhre")])
 class_properties = {
+"blur": 3.0,
 "color": Color(1, 1, 1, 1),
 "enabled": true,
 "energy": 1.0,
@@ -18,6 +19,7 @@ class_properties = {
 "shadows": false
 }
 class_property_descriptions = {
+"blur": "Sets the shadow's edge blur. Used to hide artifacting. Can be costly at higher values.",
 "color": "The light's color.",
 "enabled": "Sets default light visibility, on or off.",
 "energy": "The light's strength multiplier. For OmniLight3D and SpotLight3D, changing this value will only change the light color's intensity, not the light's radius.",
