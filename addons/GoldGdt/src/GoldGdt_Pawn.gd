@@ -16,6 +16,7 @@ func _process(delta):
 			_override_view_rotation(Vector2(deg_to_rad(start_view_yaw), deg_to_rad(start_view_pitch)))
 
 func _ready():
+	print(OS.get_data_dir())
 	_override_view_rotation(Vector2(deg_to_rad(start_view_yaw), deg_to_rad(start_view_pitch)))
 
 ## Forces camera rotation based on a Vector2 containing yaw and pitch, in degrees.

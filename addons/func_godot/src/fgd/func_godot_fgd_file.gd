@@ -1,19 +1,28 @@
 @tool
 @icon("res://addons/func_godot/icons/icon_godot_ranger.svg")
-## [Resource] file used to express a set of [FuncGodotFGDEntity] definitions. Can be exported as an FGD file for use with a Quake map editor. Used in conjunction with a [FuncGodotMapSetting] resource to generate nodes in a [FuncGodotMap] node.
-class_name FuncGodotFGDFile
-extends Resource
+class_name FuncGodotFGDFile extends Resource
+## [Resource] file used to express a set of [FuncGodotFGDEntity] definitions. 
+## 
+## Can be exported as an FGD file for use with a Quake or Hammer-based map editor. Used in conjunction with [FuncGodotMapSetting] to generate nodes in a [FuncGodotMap] node.
+##
+## @tutorial(Level Design Book FGD Chapter): https://book.leveldesignbook.com/appendix/resources/formats/fgd
+## @tutorial(Valve Developer Wiki FGD Article): https://developer.valvesoftware.com/wiki/FGD
 
+## Supported map editors enum, used in conjunction with [member target_map_editor].
+enum FuncGodotTargetMapEditors {
+	OTHER,
+	TRENCHBROOM,
+	JACK,
+	NET_RADIANT_CUSTOM,
+}
 
 ## Builds and exports the FGD file.
-@export var export_file: bool:
-	get:
-		return export_file # TODO Converter40 Non existent get function
-	set(new_export_file):
-		if new_export_file != export_file:
-			do_export_file(model_key_word_supported)
+@export_tool_button("Export FGD") var export_file := export_button
 
-func do_export_file(model_key_supported: bool = true, fgd_output_folder: String = "") -> void:
+func export_button() -> void:
+	do_export_file(target_map_editor)
+
+func do_export_file(target_editor: FuncGodotTargetMapEditors = FuncGodotTargetMapEditors.TRENCHBROOM, fgd_output_folder: String = "") -> void:
 	if not Engine.is_editor_hint():
 		return
 	
@@ -25,20 +34,36 @@ func do_export_file(model_key_supported: bool = true, fgd_output_folder: String 
 
 	if fgd_name == "":
 		print("Skipping export: Empty FGD name")
+	
+	if not DirAccess.dir_exists_absolute(fgd_output_folder):
+		if DirAccess.make_dir_recursive_absolute(fgd_output_folder) != OK:
+			print("Skipping export: Failed to create directory")
+			return
 
-	var fgd_file = fgd_output_folder + "/" + fgd_name + ".fgd"
-
-	print("Exporting FGD to ", fgd_file)
+	var fgd_file = fgd_output_folder.path_join(fgd_name + ".fgd")
+	
 	var file_obj := FileAccess.open(fgd_file, FileAccess.WRITE)
-	file_obj.store_string(build_class_text(model_key_supported))
+	if not file_obj:
+		print("Failed to open file for writing: ", fgd_file)
+		return
+	
+	print("Exporting FGD to ", fgd_file)
+	file_obj.store_string(build_class_text(target_editor))
 	file_obj.close()
 
 @export_group("Map Editor")
 
-## Some map editors do not support the "model" key word and require the "studio" key word instead. 
-## If you get errors in your map editor, try changing this setting. 
+## Some map editors do not support the features found in others 
+## (ex: TrenchBroom supports the "model" key word while others require "studio", 
+## J.A.C.K. uses the "shader" key word while others use "material", etc...). 
+## If you get errors in your map editor, try changing this setting and re-exporting. 
 ## This setting is overridden when the FGD is built via the Game Config resource.
-@export var model_key_word_supported: bool = true
+@export var target_map_editor: FuncGodotTargetMapEditors = FuncGodotTargetMapEditors.TRENCHBROOM
+
+# Some map editors do not support the "model" key word and require the "studio" key word instead. 
+# If you get errors in your map editor, try changing this setting. 
+# This setting is overridden when the FGD is built via the Game Config resource.
+#@export var model_key_word_supported: bool = true
 
 @export_group("FGD")
 
@@ -51,12 +76,14 @@ func do_export_file(model_key_supported: bool = true, fgd_output_folder: String 
 ## Array of resources that inherit from [FuncGodotFGDEntityClass]. This array defines the entities that will be added to the exported FGD file and the nodes that will be generated in a [FuncGodotMap].
 @export var entity_definitions: Array[Resource] = []
 
-func build_class_text(model_key_supported: bool = true) -> String:
+func build_class_text(target_editor: FuncGodotTargetMapEditors = FuncGodotTargetMapEditors.TRENCHBROOM) -> String:
 	var res : String = ""
 
 	for base_fgd in base_fgd_files:
 		if base_fgd is FuncGodotFGDFile:
-			res += base_fgd.build_class_text(model_key_supported)
+			res += base_fgd.build_class_text(target_editor)
+		else:
+			printerr("Base Fgd Files contains incorrect resource type! Should only be type FuncGodotFGDFile.")
 	
 	var entities = get_fgd_classes()
 	for ent in entities:
@@ -65,7 +92,7 @@ func build_class_text(model_key_supported: bool = true) -> String:
 		if ent.func_godot_internal:
 			continue
 		
-		var ent_text = ent.build_def_text(model_key_supported)
+		var ent_text = ent.build_def_text(target_editor)
 		res += ent_text
 		if ent != entities[-1]:
 			res += "\n"
@@ -84,8 +111,8 @@ func get_fgd_classes() -> Array:
 		res.append(cur_ent_def)
 	return res
 
-func get_entity_definitions() -> Dictionary:
-	var res : Dictionary = {}
+func get_entity_definitions() -> Dictionary[String, FuncGodotFGDEntityClass]:
+	var res: Dictionary[String, FuncGodotFGDEntityClass] = {}
 
 	for base_fgd in base_fgd_files:
 		var fgd_res = base_fgd.get_entity_definitions()
