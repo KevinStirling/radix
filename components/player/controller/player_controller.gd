@@ -12,9 +12,11 @@ class_name PlayerController extends CharacterBody3D
 @export var crouch_speed : float = -5.0
 @export_category("Jump Settings")
 @export var jump_velocity : float = 5.0
+@export var fall_velocity_threshold : float = -5.0
 @export_category("References")
 @export var state_chart : StateChart
 @export var camera : CameraController
+@export var camera_effects : CameraEffects
 @export var standing_collision : CollisionShape3D
 @export var crouching_collision : CollisionShape3D
 @export var crouch_check : ShapeCast3D
@@ -25,6 +27,7 @@ var _movement_velocity : Vector3 = Vector3.ZERO
 var sprint_modifier : float = 0.0
 var crouch_modifier : float = 0.0
 var speed : float = 0.0
+var current_fall_velocity : float
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -50,25 +53,43 @@ func _physics_process(delta: float) -> void:
 	velocity = _movement_velocity
 	move_and_slide()
 
+## updates player rotation based on a rotation input
+## used by CameraController to update the player rotation based on mouse input
 func update_rotation(rotation_input) -> void:
 	global_transform.basis = Basis.from_euler(rotation_input)
 
+## sets player speed to sprinting
 func sprint() -> void:
 	sprint_modifier = sprint_speed
 
+## sets player speed to walking
 func walk() -> void:
 	sprint_modifier = 0.0
 
+## triggers a player crouch
 func stand() -> void:
 	crouch_modifier = 0.0
 	standing_collision.disabled = false
 	crouching_collision.disabled = true
 
+## triggers a player crouch
 func crouch() -> void:
 	if is_on_floor():
 		crouch_modifier = crouch_speed
 	standing_collision.disabled = true
 	crouching_collision.disabled = false
 
+## triggers a player jump
 func jump() -> void:
 	velocity.y += jump_velocity
+
+## returns true if player is falling at a speed higher than fall_velocity_threshold
+## used while player is in airborne state to determine if a camera effect should be 
+## played upon hitting the ground
+func check_fall_speed() -> bool:
+	if current_fall_velocity < fall_velocity_threshold:
+		current_fall_velocity = 0.0
+		return true
+	else:
+		current_fall_velocity = 0.0
+		return false
