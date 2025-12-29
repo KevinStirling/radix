@@ -1,11 +1,18 @@
 extends RayCast3D
 
+# This is my older version of an Interact Raycast
+# It was specifically designed to be used ONLY with the terminal component I made
+# It should be reworked to be more modular
+
 @onready var hint_label : Label = $UI/Control/HintLabel
 var interacting : bool :
 	get:
 		return interacting
 	set(value):
 		interacting = value
+		# mouse mode switching should be done ON the object being interacted WITH
+		# each interactable should have an interact() func that handles stuff like this
+		# also use camera.component_mouse_capture.current_mouse_mode rather than Input.mouse_mode directly
 		if interacting == false:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else :
