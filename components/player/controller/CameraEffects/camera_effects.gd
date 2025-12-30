@@ -23,7 +23,7 @@ class_name CameraEffects extends Camera3D
 @export var run_roll : float = 0.25
 @export var max_pitch : float = 1.0
 @export var max_roll : float = 2.5
-@export var tilt_smoothing : float = 0.2
+@export var tilt_smoothing : float = 0.1
 @export_group("Camera Kick")
 @export_subgroup("Fall Kick")
 @export var fall_time : float = 0.3
@@ -35,7 +35,7 @@ class_name CameraEffects extends Camera3D
 @export_subgroup("Headbob")
 @export_range(0.0, 0.1, 0.001) var bob_pitch : float = 0.05
 @export_range(0.0, 0.1, 0.001) var bob_roll : float = 0.025
-@export_range(0.0, 0.04, 0.001) var bob_up : float = 0.005
+@export_range(0.0, 0.04, 0.001) var bob_up : float = 0.015
 @export_range(3.0, 8.0, 0.1) var bob_frequency : float = 6.0
 
 var _fall_value : float = 0.0

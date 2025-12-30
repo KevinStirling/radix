@@ -7,9 +7,9 @@ class_name PlayerController extends CharacterBody3D
 @export var acceleration : float = 1.0
 @export var deceleration : float = 0.5
 @export_group("Speed")
-@export var default_speed: float = 10.0
-@export var sprint_speed : float = 5.0
-@export var crouch_speed : float = -5.0
+@export var default_speed: float = 5.0
+@export var sprint_speed : float = 3.0
+@export var crouch_speed : float = -3.0
 @export_category("Jump Settings")
 @export var jump_velocity : float = 5.0
 @export var fall_velocity_threshold : float = -5.0
@@ -21,6 +21,7 @@ class_name PlayerController extends CharacterBody3D
 @export var crouching_collision : CollisionShape3D
 @export var crouch_check : ShapeCast3D
 @export var interaction_raycast : RayCast3D
+@export var step_handler : StepHandlerComponent
 
 var _input_dir : Vector2 = Vector2.ZERO
 var _movement_velocity : Vector3 = Vector3.ZERO
@@ -28,8 +29,10 @@ var sprint_modifier : float = 0.0
 var crouch_modifier : float = 0.0
 var speed : float = 0.0
 var current_fall_velocity : float
+var previous_velocity : Vector3
 
 func _physics_process(delta: float) -> void:
+	previous_velocity = velocity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -52,6 +55,8 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = _movement_velocity
 	move_and_slide()
+	if is_on_floor():
+		step_handler.handle_step_climbing()
 
 ## updates player rotation based on a rotation input
 ## used by CameraController to update the player rotation based on mouse input
@@ -93,3 +98,6 @@ func check_fall_speed() -> bool:
 	else:
 		current_fall_velocity = 0.0
 		return false
+
+func get_input_direction() -> Vector2:
+	return _input_dir

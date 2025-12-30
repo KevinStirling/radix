@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c8syqhb1nkc3g"]
+[gd_scene load_steps=28 format=3 uid="uid://c8syqhb1nkc3g"]
 
 [ext_resource type="Script" uid="uid://d2s7blxwi1oxc" path="res://components/player/controller/player_controller.gd" id="1_8rss5"]
 [ext_resource type="Script" uid="uid://ll2t0gay735r" path="res://components/player/controller/MouseCapture/mouse_capture.gd" id="1_ai8y1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="4_xn6ov"]
 [ext_resource type="Script" uid="uid://c1vp0ojjvaby1" path="res://addons/godot_state_charts/parallel_state.gd" id="5_icx83"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="6_0xp3s"]
+[ext_resource type="Script" uid="uid://bhu15xvl5pqv0" path="res://components/player/controller/StepHandler/step_handler.gd" id="7_2q21k"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="7_hp8ap"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_m7hr0"]
 [ext_resource type="Script" uid="uid://h35e2wdmt7ev" path="res://components/player/controller/StateMachine/state_machine.gd" id="9_icx83"]
@@ -22,6 +23,10 @@
 [ext_resource type="Script" uid="uid://dgpc07bmjdcw4" path="res://components/player/controller/StateMachine/airborne_state.gd" id="16_tn18c"]
 [ext_resource type="Script" uid="uid://bhfgl2eyytq65" path="res://components/player/controller/StateMachine/jumping_state.gd" id="17_olyrw"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2q21k"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.05490196)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8rss5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vjk30"]
@@ -30,10 +35,9 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kk8no"]
 
-[node name="PlayerController" type="CharacterBody3D" node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast")]
+[node name="PlayerController" type="CharacterBody3D" node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast", "step_handler")]
 script = ExtResource("1_8rss5")
 debug = true
-default_speed = 7.0
 state_chart = NodePath("StateChart")
 camera = NodePath("CameraController")
 camera_effects = NodePath("CameraController/Camera3D")
@@ -41,6 +45,7 @@ standing_collision = NodePath("StandingCollision")
 crouching_collision = NodePath("CrouchingCollision")
 crouch_check = NodePath("CrouchCheck")
 interaction_raycast = NodePath("CameraController/Camera3D/InteractionRaycast")
+step_handler = NodePath("Components/StepHandler")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_hp8ap")]
 unique_name_in_owner = true
@@ -54,6 +59,7 @@ grow_vertical = 1
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2q21k")
 mesh = SubResource("CapsuleMesh_8rss5")
 
 [node name="StandingCollision" type="CollisionShape3D" parent="."]
@@ -86,6 +92,10 @@ script = ExtResource("4_tn18c")
 [node name="MouseCapture" type="Node" parent="Components"]
 script = ExtResource("1_ai8y1")
 debug = true
+
+[node name="StepHandler" type="Node" parent="Components" node_paths=PackedStringArray("player")]
+script = ExtResource("7_2q21k")
+player = NodePath("../..")
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("4_xn6ov")

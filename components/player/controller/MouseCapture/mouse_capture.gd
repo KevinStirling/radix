@@ -15,8 +15,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _capture_mouse:
 		_mouse_input.x += -event.screen_relative.x * (mouse_sensitivity * mouse_sens_offset)
 		_mouse_input.y += -event.screen_relative.y * (mouse_sensitivity * mouse_sens_offset)
-	if debug:
-		print("mouse input: ", _mouse_input)
 
 func _ready() -> void:
 	Input.mouse_mode = current_mouse_mode
