@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbk6wnn6tn2bt"]
+
+[ext_resource type="Texture2D" uid="uid://c31tbmy4phf2h" path="res://trenchbroom/textures/base/checkerboard.png" id="1_m7alv"]
+
+[resource]
+albedo_texture = ExtResource("1_m7alv")
+metallic_specular = 0.0
+texture_filter = 2

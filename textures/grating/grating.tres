@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dsea7fd37lr7a"]
-
-[ext_resource type="Texture2D" uid="uid://baijv748fbmtm" path="res://textures/grating/grating.png" id="1_bkcob"]
-
-[resource]
-albedo_texture = ExtResource("1_bkcob")
-metallic_specular = 0.0
-texture_filter = 2

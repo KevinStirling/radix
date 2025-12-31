@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	update_camera_rotation(component_mouse_capture._mouse_input)
 
 	if _step_smoothing:
-		# not sure which one of these method are better tbh
+		# not sure which of these method are better tbh
 		# _target_height = lerp(_target_height, 0.0, step_speed * delta)
 		_target_height = exp_decay_f(_target_height, 0.0, step_speed, delta)
 		if abs(_target_height) < 0.01:

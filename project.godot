@@ -37,9 +37,8 @@ folder_colors={
 "res://components/": "red",
 "res://components/player/": "yellow",
 "res://components/world/": "blue",
-"res://maps/": "blue",
 "res://scenes/": "yellow",
-"res://textures/": "purple"
+"res://trenchbroom/textures/": "purple"
 }
 
 [input]

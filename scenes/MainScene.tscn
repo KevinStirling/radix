@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://djvsvkreqi4u0"]
 
 [ext_resource type="Script" uid="uid://cr76wevitgo33" path="res://scenes/game_manager.gd" id="1_c6dvc"]
-[ext_resource type="PackedScene" uid="uid://224316jlne8t" path="res://scenes/UserInterface.tscn" id="1_echbf"]
-[ext_resource type="PackedScene" uid="uid://brxrq7xmq8gck" path="res://testroom_standards.tscn" id="2_611at"]
+[ext_resource type="PackedScene" uid="uid://224316jlne8t" path="res://scenes/UserInterface/UserInterface.tscn" id="1_echbf"]
+[ext_resource type="PackedScene" uid="uid://brxrq7xmq8gck" path="res://scenes/testroom_standards.tscn" id="2_611at"]
 
 [node name="MainScene" type="Node"]
 

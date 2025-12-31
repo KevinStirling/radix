@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://ta64vtiu7nvq"
+path="res://.godot/imported/testroom_standards.map-a63b1d5c85e1150f098b7aa54ba3407a.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/testroom_standards.map"
+dest_files=["res://.godot/imported/testroom_standards.map-a63b1d5c85e1150f098b7aa54ba3407a.tres"]
+
+[params]
+
