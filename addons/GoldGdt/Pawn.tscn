@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://bk1exu1p74wrs"]
 
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
+[ext_resource type="Script" uid="uid://bh162mqhhnl6n" path="res://addons/GoldGdt/src/GoldGdt_Pawn.gd" id="1_qx48f"]
 [ext_resource type="Resource" uid="uid://c770d2068in3p" path="res://addons/GoldGdt/Default.tres" id="2_m0ukv"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Controls.gd" id="3_sa8ga"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Move.gd" id="4_5gavo"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_View.gd" id="5_say2d"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Body.gd" id="6_k6qi8"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_Camera.gd" id="7_3b78s"]
-[ext_resource type="Script" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
+[ext_resource type="Script" uid="uid://ctslgep8qfea1" path="res://addons/GoldGdt/src/GoldGdt_Controls.gd" id="3_sa8ga"]
+[ext_resource type="Script" uid="uid://bpx027hts32jk" path="res://addons/GoldGdt/src/GoldGdt_Move.gd" id="4_5gavo"]
+[ext_resource type="Script" uid="uid://bu82vcj5gvrft" path="res://addons/GoldGdt/src/GoldGdt_View.gd" id="5_say2d"]
+[ext_resource type="Script" uid="uid://lobpopfxmfoc" path="res://addons/GoldGdt/src/GoldGdt_Body.gd" id="6_k6qi8"]
+[ext_resource type="Script" uid="uid://h1f3a1n5aagk" path="res://addons/GoldGdt/src/GoldGdt_Camera.gd" id="7_3b78s"]
+[ext_resource type="Script" uid="uid://ha3tq3cjy2ll" path="res://addons/GoldGdt/src/GoldGdt_DebugUI.gd" id="7_vbtkw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j7pn1"]
 size = Vector3(0.813, 1.829, 0.813)
@@ -48,14 +48,14 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="Debug UI/Game"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 20
 text = "Game"
 
 [node name="Info" type="Label" parent="Debug UI/Game"]
-layout_mode = 2
+layout_mode = 0
 offset_top = 28.0
 offset_right = 129.0
 offset_bottom = 85.0
@@ -73,7 +73,7 @@ offset_bottom = 135.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="Debug UI/Controls"]
-layout_mode = 2
+layout_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Controls"
 
@@ -98,7 +98,7 @@ offset_bottom = 272.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="Debug UI/View Control"]
-layout_mode = 2
+layout_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "View Control"
 
@@ -120,7 +120,7 @@ offset_bottom = 349.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="Debug UI/Body"]
-layout_mode = 2
+layout_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Body
 "

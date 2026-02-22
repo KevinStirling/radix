@@ -34,15 +34,12 @@ func _process(delta: float) -> void:
 	if _step_smoothing:
 		# not sure which of these method are better tbh
 		# _target_height = lerp(_target_height, 0.0, step_speed * delta)
-		_target_height = exp_decay_f(_target_height, 0.0, step_speed, delta)
+		_target_height = Math.exp_decay_f(_target_height, 0.0, step_speed, delta)
 		if abs(_target_height) < 0.01:
 			_target_height = 0.0
 			_step_smoothing = false
 
 		position.y = offset_height + _target_height
-
-func exp_decay_f(a: float, b: float, decay: float, delta: float) -> float:
-	return b + (a - b) * exp(-decay * delta)
 
 func update_camera_rotation(input: Vector2) -> void:
 	_rotation.x += input.y

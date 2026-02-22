@@ -5,11 +5,12 @@ class_name PlayerController extends CharacterBody3D
 @export_category("Movement Settings")
 @export_group("Easing")
 @export var acceleration : float = 1.0
-@export var deceleration : float = 0.5
+@export var deceleration : float = 1.0
 @export_group("Speed")
 @export var default_speed: float = 5.0
 @export var sprint_speed : float = 3.0
 @export var crouch_speed : float = -3.0
+@export var stop_speed : float = 10.0
 @export_category("Jump Settings")
 @export var jump_velocity : float = 5.0
 @export var fall_velocity_threshold : float = -5.0
@@ -30,6 +31,9 @@ var crouch_modifier : float = 0.0
 var speed : float = 0.0
 var current_fall_velocity : float
 var previous_velocity : Vector3
+var current_velocity : Vector2
+var direction : Vector3
+var wishdir : Vector3
 
 func _physics_process(delta: float) -> void:
 	previous_velocity = velocity
@@ -42,9 +46,9 @@ func _physics_process(delta: float) -> void:
 	# get all input in one Vector2, representing a direction	
 	_input_dir = Input.get_vector("pm_moveleft", "pm_moveright", "pm_moveforward", "pm_movebackward")
 	# get current_velocity by extracting x and z from the current _movement_velocity Vector3
-	var current_velocity = Vector2(_movement_velocity.x, _movement_velocity.z)
+	current_velocity = Vector2(_movement_velocity.x, _movement_velocity.z)
 	# calculate direction by normalizing the horizontal _input_dir converted to Vector3, with respect to the transform.basis
-	var direction = (transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
+	direction = (transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 
 	if direction:
 		current_velocity = lerp(current_velocity, Vector2(direction.x, direction.z) * speed, acceleration)
