@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cctlojkqtxtdr"]
+
+[ext_resource type="Texture2D" uid="uid://dkdtyu43r3vxb" path="res://trenchbroom/textures/base/proto_tx_orange.png" id="1_wiark"]
+
+[resource]
+albedo_texture = ExtResource("1_wiark")

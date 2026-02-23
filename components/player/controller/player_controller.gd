@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	direction = (transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 
 	if direction:
-		current_velocity = lerp(current_velocity, Vector2(direction.x, direction.z) * speed, acceleration)
+		current_velocity = Math.exp_decay_velo(current_velocity, Vector2(direction.x, direction.z) * speed, acceleration, delta)
 	else:
 		current_velocity = current_velocity.move_toward(Vector2.ZERO, deceleration)
 
