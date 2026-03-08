@@ -51,7 +51,6 @@ metadata/_custom_type_script = "uid://dgd4i8hrrxfvm"
 script = ExtResource("1_8rss5")
 debug = true
 acceleration = 20.0
-deceleration = 10.0
 crouch_speed = -2.0
 state_chart = NodePath("StateChart")
 camera = NodePath("CameraController")

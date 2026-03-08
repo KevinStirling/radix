@@ -4,8 +4,14 @@ class_name PlayerController extends CharacterBody3D
 @export var debug : bool = false
 @export_category("Movement Settings")
 @export_group("Easing")
-@export var acceleration : float = 1.0
-@export var deceleration : float = 1.0
+## The base acceleration amount that is multiplied by [code]wishspeed[/code] inside of [method _accelerate].
+@export var acceleration : float = 1.0 
+## The multiplier of dropped speed when friction is acting on the player. The default value equals 4.
+@export var friction : float = 4.0 
+## The base acceleration amount while airborne that is multiplied by [code]wishspeed[/code] inside of [method _accelerate].
+@export var air_acceleration : float = 10.0  
+## Used to cap the wishspeed while in the air
+@export var air_speed : float = 1.5  
 @export_group("Speed")
 @export var default_speed: float = 5.0
 @export var sprint_speed : float = 3.0
