@@ -76,10 +76,10 @@ shape = SubResource("SphereShape3D_3xfsp")
 shape = SubResource("SphereShape3D_kk8no")
 target_position = Vector3(0, 0.5, 0)
 
-[node name="CameraController" type="Node3D" parent="." unique_id=748870323 node_paths=PackedStringArray("player_controller", "component_mouse_capture")]
+[node name="CameraController" type="Node3D" parent="." unique_id=748870323 node_paths=PackedStringArray("player", "component_mouse_capture")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("3_vjk30")
-player_controller = NodePath("..")
+player = NodePath("..")
 component_mouse_capture = NodePath("../Components/MouseCapture")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=237106327 node_paths=PackedStringArray("player")]
@@ -204,10 +204,10 @@ event = &"onStanding"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
-[node name="StateMachine" type="Node" parent="." unique_id=581194335 node_paths=PackedStringArray("player_controller")]
+[node name="StateMachine" type="Node" parent="." unique_id=581194335 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("9_icx83")
-player_controller = NodePath("..")
+player = NodePath("..")
 
 [node name="MovementState" type="Node" parent="StateMachine" unique_id=1800509602]
 

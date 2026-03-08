@@ -50,14 +50,6 @@ func _physics_process(delta: float) -> void:
 	# calculate direction by normalizing the horizontal _input_dir converted to Vector3, with respect to the transform.basis
 	direction = (transform.basis * Vector3(_input_dir.x, 0, _input_dir.y)).normalized()
 
-	# if direction:
-	# 	current_velocity = Math.exp_decay_velo(current_velocity, Vector2(direction.x, direction.z) * speed, acceleration, delta)
-	# else:
-	# 	current_velocity = current_velocity.move_toward(Vector2.ZERO, deceleration)
-	#
-	# _movement_velocity = Vector3(current_velocity.x, velocity.y, current_velocity.y)
-	#
-	# velocity = _movement_velocity
 	move_and_slide()
 	if is_on_floor():
 		step_handler.handle_step_climbing()

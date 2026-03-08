@@ -5,24 +5,24 @@ extends PlayerState
 
 func _on_grounded_state_physics_processing(delta: float) -> void:
 	_friction(delta, 1.0)
-	if player_controller.direction:
-		_accelerate(delta, player_controller.direction, player_controller.speed, player_controller.acceleration) 
+	if player.direction:
+		_accelerate(delta, player.direction, player.speed, player.acceleration) 
 
-	if Input.is_action_just_pressed("pm_jump") and player_controller.is_on_floor():
-		player_controller.jump()
-		player_controller.state_chart.send_event("onAirborne")
+	if Input.is_action_just_pressed("pm_jump") and player.is_on_floor():
+		player.jump()
+		player.state_chart.send_event("onAirborne")
 
-	if not player_controller.is_on_floor():
-		player_controller.state_chart.send_event("onAirborne")
+	if not player.is_on_floor():
+		player.state_chart.send_event("onAirborne")
 
 func _friction(delta: float, strenth: float) -> void:
-	var current_speed = Vector2(player_controller.velocity.x, player_controller.velocity.z).length()
+	var current_speed = Vector2(player.velocity.x, player.velocity.z).length()
 
 	# avoid division by zero when player is basically stopped
 	if current_speed < 0.1:
 		return
 
-	var control = player_controller.stop_speed if (current_speed < player_controller.stop_speed) else current_speed 
+	var control = player.stop_speed if (current_speed < player.stop_speed) else current_speed 
 	var drop = control * FRICTION * strenth * delta
 
 	var newspeed = current_speed - drop
@@ -33,8 +33,8 @@ func _friction(delta: float, strenth: float) -> void:
 	# scale factor
 	newspeed /= current_speed
 
-	player_controller.velocity.x *= newspeed
-	player_controller.velocity.z *= newspeed
+	player.velocity.x *= newspeed
+	player.velocity.z *= newspeed
 
 func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
 	var addspeed : float
@@ -42,7 +42,7 @@ func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float)
 	var currentspeed : float
 
 	# check for direction change
-	currentspeed = player_controller.velocity.dot(wishdir)
+	currentspeed = player.velocity.dot(wishdir)
 
 	# reduce wishspeed by the amount of veer
 	addspeed = wishspeed - currentspeed
@@ -57,4 +57,4 @@ func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float)
 	if accelspeed > addspeed:
 		accelspeed = addspeed
 	
-	player_controller.velocity += accelspeed * wishdir
+	player.velocity += accelspeed * wishdir
