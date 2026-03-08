@@ -597,6 +597,8 @@ shape = SubResource("ConvexPolygonShape3D_cl447")
 
 [node name="entity_1_light_omni" parent="FuncGodotMap" unique_id=1976033948 instance=ExtResource("9_omhry")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.25, 4.75, 13.25)
+light_energy = 2.089
+omni_range = 18.465
 func_godot_properties = {
 "classname": "light_omni",
 "is_test": false,

@@ -17,4 +17,4 @@ func _process(_delta) -> void:
 func _physics_process(_delta: float) -> void:
 	player_controller.state_chart.set_expression_property("Mouse input", player_controller.camera.component_mouse_capture._mouse_input)
 	player_controller.state_chart.set_expression_property("Input direction", player_controller.get_input_direction())
-	player_controller.state_chart.set_expression_property("Move velocity", player_controller._movement_velocity)
+	player_controller.state_chart.set_expression_property("Move velocity", player_controller.velocity.length())
