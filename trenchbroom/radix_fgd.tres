@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=3 format=3 uid="uid://c0mibahbemyvo"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" format=3 uid="uid://c0mibahbemyvo"]
 
 [ext_resource type="Resource" uid="uid://djg6xxybjdd0b" path="res://components/world/entities/light/omni_light.tres" id="1_r2kj1"]
 [ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="2_7x3ut"]

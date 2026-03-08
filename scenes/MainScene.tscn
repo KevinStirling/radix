@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://djvsvkreqi4u0"]
+[gd_scene format=3 uid="uid://djvsvkreqi4u0"]
 
-[ext_resource type="Script" uid="uid://cr76wevitgo33" path="res://scenes/game_manager.gd" id="1_c6dvc"]
-[ext_resource type="PackedScene" uid="uid://224316jlne8t" path="res://scenes/UserInterface/UserInterface.tscn" id="1_echbf"]
-[ext_resource type="PackedScene" uid="uid://brxrq7xmq8gck" path="res://scenes/testroom_standards.tscn" id="2_611at"]
+[ext_resource type="Script" uid="uid://cr76wevitgo33" path="res://scenes/game_manager.gd" id="1_rhvci"]
+[ext_resource type="PackedScene" uid="uid://brxrq7xmq8gck" path="res://scenes/levels/testroom_standards.tscn" id="2_w3hab"]
+[ext_resource type="PackedScene" uid="uid://224316jlne8t" path="res://scenes/UserInterface/UserInterface.tscn" id="3_t6rsn"]
 
-[node name="MainScene" type="Node"]
+[node name="MainScene" type="Node" unique_id=1542822807]
 
-[node name="Managers" type="Node" parent="."]
+[node name="Managers" type="Node" parent="." unique_id=480909298]
 
-[node name="GameManager" type="Node" parent="Managers"]
-script = ExtResource("1_c6dvc")
+[node name="GameManager" type="Node" parent="Managers" unique_id=1185982965]
+script = ExtResource("1_rhvci")
 
-[node name="CurrentScene" type="Node3D" parent="."]
+[node name="CurrentScene" type="Node3D" parent="." unique_id=531786042]
 
-[node name="TestroomStandards" parent="CurrentScene" instance=ExtResource("2_611at")]
+[node name="TestroomStandards" parent="CurrentScene" unique_id=809475398 instance=ExtResource("2_w3hab")]
 
-[node name="UserInterface" parent="." instance=ExtResource("1_echbf")]
+[node name="UserInterface" parent="." unique_id=313122136 instance=ExtResource("3_t6rsn")]

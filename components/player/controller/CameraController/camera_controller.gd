@@ -2,7 +2,7 @@ class_name CameraController extends Node3D
 
 @export var debug : bool = false
 @export_category("References")
-@export var player_controller : PlayerController
+@export var player : PlayerController
 @export var component_mouse_capture : MouseCaptureComponent
 
 @export_category("Camera Settings")
@@ -25,7 +25,7 @@ var _rotation : Vector3
 const DEFAULT_HEIGHT : float = 0.5
 
 func _ready() -> void:
-	_rotation = player_controller.rotation
+	_rotation = player.rotation
 	offset_height = DEFAULT_HEIGHT
 
 func _process(delta: float) -> void:
@@ -34,15 +34,12 @@ func _process(delta: float) -> void:
 	if _step_smoothing:
 		# not sure which of these method are better tbh
 		# _target_height = lerp(_target_height, 0.0, step_speed * delta)
-		_target_height = exp_decay_f(_target_height, 0.0, step_speed, delta)
+		_target_height = Math.exp_decay_f(_target_height, 0.0, step_speed, delta)
 		if abs(_target_height) < 0.01:
 			_target_height = 0.0
 			_step_smoothing = false
 
 		position.y = offset_height + _target_height
-
-func exp_decay_f(a: float, b: float, decay: float, delta: float) -> float:
-	return b + (a - b) * exp(-decay * delta)
 
 func update_camera_rotation(input: Vector2) -> void:
 	_rotation.x += input.y
@@ -53,7 +50,7 @@ func update_camera_rotation(input: Vector2) -> void:
 	var _camera_rotation = Vector3(_rotation.x, 0.0, 0.0)
 
 	transform.basis = Basis.from_euler(_camera_rotation)
-	player_controller.update_rotation(_player_rotation)
+	player.update_rotation(_player_rotation)
 
 	_rotation.z = 0.0
 
