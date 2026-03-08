@@ -1,8 +1,5 @@
 extends PlayerState
 
-@export var ACCELERATION : float = 1.0 ## The base acceleration amount that is multiplied by [code]wishspeed[/code] inside of [method _accelerate]. The default value equals 10.
-@export var FRICTION : float = 4.0 ## The multiplier of dropped speed when friction is acting on the player. The default value equals 4.
-
 func _on_grounded_state_physics_processing(delta: float) -> void:
 	_friction(delta, 1.0)
 	if player.direction:
@@ -23,7 +20,7 @@ func _friction(delta: float, strenth: float) -> void:
 		return
 
 	var control = player.stop_speed if (current_speed < player.stop_speed) else current_speed 
-	var drop = control * FRICTION * strenth * delta
+	var drop = control * player.friction * strenth * delta
 
 	var newspeed = current_speed - drop
 

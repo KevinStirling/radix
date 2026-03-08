@@ -1,14 +1,9 @@
 extends PlayerState
 
-@export var AIR_ACCELERATION : float = 10.0  # Same as ground for strafing to work
-@export var AIR_SPEED : float = 1.5  # This is the key - much lower "wishspeed" cap in air
-@export var FRICTION : float = 4.0 ## The multiplier of dropped speed when friction is acting on the player. The default value equals 4.
-
 func _on_airborne_state_physics_processing(delta: float) -> void:
 	if player.direction:
-		_air_accelerate(delta, player.direction, AIR_SPEED, AIR_ACCELERATION)
+		_air_accelerate(delta, player.direction, player.air_speed, player.air_acceleration)
  
-    # Check for landing
 	if player.is_on_floor():
 		if player.check_fall_speed():
 			player.camera_effects.add_fall_kick(3.0)
