@@ -554,6 +554,7 @@ metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 collision_mask = 0
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=1768884428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00014233589, 0, 0.005426407)
 mesh = SubResource("ArrayMesh_qil1r")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=491684639]
@@ -598,6 +599,8 @@ shape = SubResource("ConvexPolygonShape3D_cl447")
 [node name="entity_1_light_omni" parent="FuncGodotMap" unique_id=1976033948 instance=ExtResource("9_omhry")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.25, 4.75, 13.25)
 light_energy = 2.089
+shadow_enabled = true
+shadow_blur = 1.761
 omni_range = 18.465
 func_godot_properties = {
 "classname": "light_omni",

@@ -14,6 +14,11 @@ class_name PlayerController extends CharacterBody3D
 @export_category("Jump Settings")
 @export var jump_velocity : float = 5.0
 @export var fall_velocity_threshold : float = -5.0
+@export var fall_gravity_multiplier : float = 1.5
+@export_category("BHop")
+@export var enable_bhop : bool = true
+@export var soft_cap_speed : float = 10.0
+@export var soft_cap_factor : float = 0.5
 @export_category("References")
 @export var state_chart : StateChart
 @export var camera : CameraController
@@ -38,7 +43,7 @@ var wishdir : Vector3
 func _physics_process(delta: float) -> void:
 	previous_velocity = velocity
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * fall_gravity_multiplier * delta
 
 	var speed_modifier = sprint_modifier
 	speed = default_speed + speed_modifier + crouch_modifier

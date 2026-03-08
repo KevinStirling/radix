@@ -16,8 +16,10 @@
 [ext_resource type="Script" uid="uid://4k07c23cnvfn" path="res://components/player/controller/StateMachine/idle_state.gd" id="10_0xp3s"]
 [ext_resource type="Script" uid="uid://dowgcdoc3ertr" path="res://components/player/controller/StateMachine/grounded_state.gd" id="11_bxhni"]
 [ext_resource type="Script" uid="uid://cc3vah0lc2k5n" path="res://components/player/controller/StateMachine/moving_state.gd" id="12_srl5j"]
+[ext_resource type="Script" uid="uid://bambbrd2wupx0" path="res://addons/godot_state_charts/state_is_active_guard.gd" id="13_38eyu"]
 [ext_resource type="Script" uid="uid://bfp6irwqkgtyj" path="res://components/player/controller/StateMachine/walking_state.gd" id="13_fcvpf"]
 [ext_resource type="Script" uid="uid://bpat102up2hdd" path="res://components/player/controller/StateMachine/sprinting_state.gd" id="14_fcvpf"]
+[ext_resource type="Script" uid="uid://dgd4i8hrrxfvm" path="res://addons/godot_state_charts/not_guard.gd" id="14_iv1n6"]
 [ext_resource type="Script" uid="uid://ccfuyegsjdg1l" path="res://components/player/controller/StateMachine/crouching_state.gd" id="15_3xfsp"]
 [ext_resource type="Script" uid="uid://wsei4gwl40f5" path="res://components/player/controller/StateMachine/standing_state.gd" id="16_kk8no"]
 [ext_resource type="Script" uid="uid://dgpc07bmjdcw4" path="res://components/player/controller/StateMachine/airborne_state.gd" id="16_tn18c"]
@@ -34,6 +36,16 @@ albedo_color = Color(1, 1, 1, 0.05490196)
 [sub_resource type="SphereShape3D" id="SphereShape3D_3xfsp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kk8no"]
+
+[sub_resource type="Resource" id="Resource_ih7b1"]
+script = ExtResource("13_38eyu")
+state = NodePath("../../../../Posture/Crouching")
+metadata/_custom_type_script = "uid://bambbrd2wupx0"
+
+[sub_resource type="Resource" id="Resource_sk4j6"]
+script = ExtResource("14_iv1n6")
+guard = SubResource("Resource_ih7b1")
+metadata/_custom_type_script = "uid://dgd4i8hrrxfvm"
 
 [node name="PlayerController" type="CharacterBody3D" unique_id=1407980881 node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast", "step_handler")]
 script = ExtResource("1_8rss5")
@@ -164,6 +176,7 @@ delay_in_seconds = "0.0"
 script = ExtResource("8_m7hr0")
 to = NodePath("../Sprinting")
 event = &"onSprinting"
+guard = SubResource("Resource_sk4j6")
 delay_in_seconds = "0.0"
 
 [node name="Airborne" type="Node" parent="StateChart/Root/Movement" unique_id=173267137]
