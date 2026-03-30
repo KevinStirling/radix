@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://dcpjktnhiv16l"]
+
+[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_fha4j"]
+[ext_resource type="Resource" uid="uid://cc5i4v0nyqvkp" path="res://trenchbroom/radix_map_settings.tres" id="2_trckb"]
+[ext_resource type="Material" path="res://trenchbroom/textures/base/proto_tx_grey.tres" id="3_fha4j"]
+[ext_resource type="Environment" uid="uid://q6dyvdvw3bjm" path="res://scenes/world_env.tres" id="4_178o3"]
+[ext_resource type="PackedScene" uid="uid://c8syqhb1nkc3g" path="res://components/player/controller/PlayerController.tscn" id="5_fa36t"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fha4j"]
+_surfaces = [{
+"aabb": AABB(-40, -0.5001221, 0, 40, 0.5001221, 40),
+"attribute_data": PackedByteArray("AAAAAAAAAAAAACBBAAAAAAAAIEEACAA+AAAAAAAIAD4AACBBAAgAPgAAAAAACAA+AAAAAAAAAAAAACBBAAAAAAAAIMEAACBBAAAgwQAAAAAAAAAAAAAAAAAAAAAAACBBAAAgQQAAIEEAAAAAAAAgQQAAAAAAAAAAAAAgQQAAAAAAACDBAAAAAAAAAAAAAAAAAAAAAAAIAD4AACDBAAgAPgAAAAAACAA+AAAgwQAIAD4AACDBAAAAAAAAAAAAAAAA"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": ExtResource("3_fha4j"),
+"name": "base/proto_tx_grey",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAAAAAAAAAAAAAAAgwgAAAAAAAAAAAAAgwgAIAL8AAAAAAAAAAAAIAL8AAAAAAAAgwgAIAL8AACBCAAAgwgAIAL8AAAAAAAAgwgAAAAAAAAAAAAAgwgAAAAAAACBCAAAgwgAAAL8AACBCAAAAAAAAAL8AACBCAAAAAAAAAL8AAAAAAAAgwgAAAL8AAAAAAAAgwgAAAAAAACBCAAAgwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACBCAAAAAAAAAAAAACBCAAAAAAAAAAAAAAAAAAAAAAAIAL8AAAAAAAAAAAAIAL8AACBCAAAAAAAIAL8AACBCAAAgwgAIAL8AACBCAAAgwgAAAAAAACBCAAAAAAAAAAAAACBC/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nsb4i"]
+points = PackedVector3Array(0, 0, 40, 0, -0.5, 40, -40, 0, 40, -40, -0.5, 40, 0, 0, 0, 0, -0.5, 0, -40, 0, 0, -40, -0.5, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2fqff"]
+points = PackedVector3Array(0, 3.5, 0, 0, -0.5, 0, -40, 3.5, 0, -40, -0.5, 0, 0, 3.5, -0.5, 0, -0.5, -0.5, -40, 3.5, -0.5, -40, -0.5, -0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_178o3"]
+points = PackedVector3Array(0, 3.5, 40.5, 0, -0.5, 40.5, -40, 3.5, 40.5, -40, -0.5, 40.5, 0, 3.5, 40, 0, -0.5, 40, -40, 3.5, 40, -40, -0.5, 40)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fa36t"]
+points = PackedVector3Array(0.5, 3.5, 40, 0.5, -0.5, 40, 0, 3.5, 40, 0, -0.5, 40, 0.5, 3.5, 0, 0.5, -0.5, 0, 0, 3.5, 0, 0, -0.5, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_53kkl"]
+points = PackedVector3Array(-40, 3.5, 40, -40, -0.5, 40, -40.5, 3.5, 40, -40.5, -0.5, 40, -40, 3.5, 0, -40, -0.5, 0, -40.5, 3.5, 0, -40.5, -0.5, 0)
+
+[node name="MoveTest" type="Node3D" unique_id=1386653067]
+
+[node name="FuncGodotMap" type="Node3D" parent="." unique_id=1459835132]
+script = ExtResource("1_fha4j")
+local_map_file = "uid://hbgsa10jxkoh"
+map_settings = ExtResource("2_trckb")
+metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap" unique_id=1771702576]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=1616266758]
+mesh = SubResource("ArrayMesh_fha4j")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=1641588011]
+shape = SubResource("ConvexPolygonShape3D_nsb4i")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=759825112]
+shape = SubResource("ConvexPolygonShape3D_2fqff")
+
+[node name="entity_0_brush_2_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=873011652]
+shape = SubResource("ConvexPolygonShape3D_178o3")
+
+[node name="entity_0_brush_3_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=732785979]
+shape = SubResource("ConvexPolygonShape3D_fa36t")
+
+[node name="entity_0_brush_4_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn" unique_id=764340438]
+shape = SubResource("ConvexPolygonShape3D_53kkl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=684950042]
+environment = ExtResource("4_178o3")
+
+[node name="PlayerController" parent="." unique_id=1407980881 instance=ExtResource("5_fa36t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.200352, 1.0578643, 18.994644)

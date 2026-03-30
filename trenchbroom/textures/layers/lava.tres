@@ -1,11 +1,25 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://n3ek2fexpwya"]
+
+[ext_resource type="Shader" uid="uid://bi4mkpsqua2wm" path="res://trenchbroom/textures/layers/lava.gdshader" id="1_p0x4y"]
+[ext_resource type="Texture2D" uid="uid://b0yrgys2t5no1" path="res://trenchbroom/textures/layers/gore_3.png" id="2_6btwd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyv7i"]
+render_priority = 0
+shader = ExtResource("1_p0x4y")
+shader_parameter/albedo_texture = ExtResource("2_6btwd")
+shader_parameter/warp_speed = 0.6610000313975
+shader_parameter/warp_intensity = 0.058000002755
+shader_parameter/warp_closeness = 0.76200003549648
+shader_parameter/flow_dir = Vector2(1, 0)
+shader_parameter/flow_speed = 0.0
+shader_parameter/uv_scale = 1.0
 
 [resource]
-flags_transparent = true
-albedo_color = Color( 0, 0, 0, 0.501961 )
+next_pass = SubResource("ShaderMaterial_cyv7i")
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.501961)
+metallic = 1.0
+metallic_specular = 0.0
 roughness = 0.35
 emission_enabled = true
-emission = Color( 1, 0.117647, 0, 1 )
-emission_energy = 4.0
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(0.2593032, 0.07185809, 0.2680334, 1)

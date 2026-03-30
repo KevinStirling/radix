@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://cn121lpl4ejnk"
+path="res://.godot/imported/test_func_terrian.map-e1abd134b8526cd53bfdb3fc2291871d.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/test_func_terrian.map"
+dest_files=["res://.godot/imported/test_func_terrian.map-e1abd134b8526cd53bfdb3fc2291871d.tres"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://hbgsa10jxkoh"
+path="res://.godot/imported/move_test.map-0e79cd42424b5e8a669cbe499a976be2.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/move_test.map"
+dest_files=["res://.godot/imported/move_test.map-0e79cd42424b5e8a669cbe499a976be2.tres"]
+
+[params]
+

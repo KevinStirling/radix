@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bue53ulucj2qf"
-path.s3tc="res://.godot/imported/floor_2.png-f9e472fd9dd30890cce81c5ead34a1fa.s3tc.ctex"
+uid="uid://b0yrgys2t5no1"
+path.s3tc="res://.godot/imported/gore_3.png-5a6a854ecab72be1c032b34e1288e468.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://trenchbroom/textures/floor/floor_2.png"
-dest_files=["res://.godot/imported/floor_2.png-f9e472fd9dd30890cce81c5ead34a1fa.s3tc.ctex"]
+source_file="res://trenchbroom/textures/layers/gore_3.png"
+dest_files=["res://.godot/imported/gore_3.png-5a6a854ecab72be1c032b34e1288e468.s3tc.ctex"]
 
 [params]
 

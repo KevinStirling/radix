@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://kcsfjtct5k4g"
+path="res://.godot/imported/greta_base.map-1e80994b978b2b270143c5a38162776f.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/greta_base.map"
+dest_files=["res://.godot/imported/greta_base.map-1e80994b978b2b270143c5a38162776f.tres"]
+
+[params]
+
