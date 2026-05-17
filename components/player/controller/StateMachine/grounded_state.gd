@@ -1,9 +1,10 @@
 extends PlayerState
 
+
 func _on_grounded_state_physics_processing(delta: float) -> void:
 	_friction(delta, 1.0)
 	if player.direction:
-		_accelerate(delta, player.direction, player.speed, player.acceleration) 
+		_accelerate(delta, player.direction, player.speed, player.acceleration)
 
 	if Input.is_action_just_pressed("pm_jump") and player.is_on_floor():
 		player.jump()
@@ -12,14 +13,17 @@ func _on_grounded_state_physics_processing(delta: float) -> void:
 	if not player.is_on_floor():
 		player.state_chart.send_event("onAirborne")
 
+
 func _friction(delta: float, strenth: float) -> void:
 	var current_speed = Vector2(player.velocity.x, player.velocity.z).length()
 
-	# avoid division by zero when player is basically stopped
+	# avoid division by zero when player is basically stopped, and set velocity to zero
 	if current_speed < 0.1:
+		player.velocity.x = 0
+		player.velocity.z = 0
 		return
 
-	var control = player.stop_speed if (current_speed < player.stop_speed) else current_speed 
+	var control = player.stop_speed if (current_speed < player.stop_speed) else current_speed
 	var drop = control * player.friction * strenth * delta
 
 	var newspeed = current_speed - drop
@@ -33,10 +37,11 @@ func _friction(delta: float, strenth: float) -> void:
 	player.velocity.x *= newspeed
 	player.velocity.z *= newspeed
 
+
 func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float) -> void:
-	var addspeed : float
-	var accelspeed : float
-	var currentspeed : float
+	var addspeed: float
+	var accelspeed: float
+	var currentspeed: float
 
 	# check for direction change
 	currentspeed = player.velocity.dot(wishdir)
@@ -53,5 +58,5 @@ func _accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: float)
 	# cap acceleration at addspeed
 	if accelspeed > addspeed:
 		accelspeed = addspeed
-	
+
 	player.velocity += accelspeed * wishdir

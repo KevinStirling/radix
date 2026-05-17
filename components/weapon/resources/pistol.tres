@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ddx7jjhmk5hs1"]
+
+[ext_resource type="Script" uid="uid://coqlycpydmk2d" path="res://components/weapon/scripts/weapon.gd" id="1_m2jnn"]
+[ext_resource type="PackedScene" uid="uid://jkgr06xn6lti" path="res://components/weapon/models/pistol.tscn" id="2_p418k"]
+
+[resource]
+script = ExtResource("1_m2jnn")
+weapon_model = ExtResource("2_p418k")
+metadata/_custom_type_script = "uid://coqlycpydmk2d"
