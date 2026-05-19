@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="Weapon" format=3 uid="uid://ddx7jjhmk5hs1"]
 
+[ext_resource type="PackedScene" uid="uid://dw8bv7da1xa3r" path="res://components/weapon/models/projectile.tscn" id="1_ka2gl"]
 [ext_resource type="Script" uid="uid://coqlycpydmk2d" path="res://components/weapon/scripts/weapon.gd" id="1_m2jnn"]
 [ext_resource type="PackedScene" uid="uid://jkgr06xn6lti" path="res://components/weapon/models/pistol.tscn" id="2_p418k"]
 
 [resource]
 script = ExtResource("1_m2jnn")
+is_hitscan = false
 weapon_model = ExtResource("2_p418k")
+projectile_scene = ExtResource("1_ka2gl")
 metadata/_custom_type_script = "uid://coqlycpydmk2d"
