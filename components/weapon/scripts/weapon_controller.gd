@@ -8,12 +8,21 @@ extends Node
 
 var current_weapon_model: Node3D
 var current_ammo: int
+var fire_rate_timer: float = 0.0
+var can_fire_next: bool = true
 
 
 func _ready():
 	if current_weapon:
 		spawn_weapon_model()
 		current_ammo = current_weapon.max_ammo
+
+
+func _process(delta: float) -> void:
+	if fire_rate_timer > 0:
+		fire_rate_timer -= delta
+		if fire_rate_timer <= 0:
+			can_fire_next = true
 
 
 func spawn_weapon_model():
@@ -27,13 +36,17 @@ func spawn_weapon_model():
 
 
 func can_fire() -> bool:
-	return current_ammo > 0
+	return current_ammo > 0 and can_fire_next
 
 
 func fire_weapon() -> void:
 	if can_fire():
 		current_ammo -= 1
 		print("Fired! Ammo: ", current_ammo)
+
+		# start fire rate cooldown
+		can_fire_next = false
+		fire_rate_timer = 1.0 / current_weapon.fire_rate
 
 	if current_weapon.is_hitscan:
 		_perform_hitscan()
@@ -48,17 +61,36 @@ func _perform_hitscan() -> void:
 
 	var space_state = camera.get_world_3d().direct_space_state
 	var from = camera.global_position
-	var forward = -camera.global_transform.basis.z
-	var to = from + forward * current_weapon.max_range
 
-	var query = PhysicsRayQueryParameters3D.create(from, to)
-	# you can change collision mask here to restrict what mesh layers are hit
-	# query.collision_mask = 1
-	var result = space_state.intersect_ray(query)
+	for i in current_weapon.pellet_count:
+		var forward = -camera.global_transform.basis.z
 
-	if result:
-		print("Hit: ", result.collider.name, " at ", result.position)
-		_spawn_impact_marker(result.position)
+		# calculate accuracy spread (inverse relationship)
+		var accuracy_spread = (100 - current_weapon.accuracy) / 1000.0
+
+		# add accuracy randomness
+		var accuracy_x = randf_range(-accuracy_spread, accuracy_spread)
+		var accuracy_y = randf_range(-accuracy_spread, accuracy_spread)
+		var direction = forward + Vector3(accuracy_x, accuracy_y, 0)
+
+		# add pelet spread if multiple pellets
+		if current_weapon.pellet_count > 1:
+			var spread_x = randf_range(-current_weapon.spread_angle, current_weapon.spread_angle)
+			var spread_y = randf_range(-current_weapon.spread_angle, current_weapon.spread_angle)
+			# direction multiplied by camera.global_transform.basis, so the random
+			# accuracy is relative to where the player is facing
+			direction += Vector3(spread_x, spread_y, 0) * camera.global_transform.basis
+
+		var to = from + direction * current_weapon.max_range
+
+		var query = PhysicsRayQueryParameters3D.create(from, to)
+		# you can change collision mask here to restrict what mesh layers are hit
+		# query.collision_mask = 1
+		var result = space_state.intersect_ray(query)
+
+		if result:
+			print("Hit: ", result.collider.name, " at ", result.position)
+			_spawn_impact_marker(result.position)
 
 
 ## Debug function to visualize where a hitscan weapon hits
@@ -94,8 +126,18 @@ func _spawn_projectile() -> void:
 
 	# calculate direction and velocity
 	var forward = -camera.global_transform.basis.z
-	var velocity = forward * current_weapon.projectile_speed
-	projectile.look_at(projectile.global_position + forward, Vector3.UP)
+
+	# add accuracy randomness
+	var accuracy_spread = (100 - current_weapon.accuracy) / 1000.0
+	var accuracy_x = randf_range(-accuracy_spread, accuracy_spread)
+	var accuracy_y = randf_range(-accuracy_spread, accuracy_spread)
+	# direction multiplied by camera.global_transform.basis, so the random
+	# accuracy is relative to where the player is facing
+	var direction = forward + Vector3(accuracy_x, accuracy_y, 0) * camera.global_transform.basis
+
+	var velocity = direction * current_weapon.projectile_speed
+
+	projectile.look_at(projectile.global_position + direction, Vector3.UP)
 
 	# setup projectile
 	projectile.setup(velocity, current_weapon.damage)
