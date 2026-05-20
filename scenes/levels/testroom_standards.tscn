@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dx3twg33vra01" path="res://components/world/entities/light/omni_light.tscn" id="9_omhry"]
 [ext_resource type="LightmapGIData" uid="uid://ube1wwisltd4" path="res://scenes/levels/testroom_standards.lmbake" id="10_a0c6c"]
 [ext_resource type="Environment" uid="uid://q6dyvdvw3bjm" path="res://scenes/world_env.tres" id="10_is6n7"]
-[ext_resource type="PackedScene" uid="uid://c8syqhb1nkc3g" path="res://components/player/controller/PlayerController.tscn" id="11_6sgre"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0c6c"]
 albedo_texture = ExtResource("3_a0c6c")
@@ -852,6 +851,3 @@ light_data = ExtResource("10_a0c6c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=668468779]
 environment = ExtResource("10_is6n7")
-
-[node name="PlayerController" parent="." unique_id=1922702598 instance=ExtResource("11_6sgre")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1833014, 1.0578643, 6.4228687)

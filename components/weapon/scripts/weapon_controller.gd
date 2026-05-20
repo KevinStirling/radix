@@ -54,6 +54,17 @@ func fire_weapon() -> void:
 		_spawn_projectile()
 
 
+func switch_weapon(weapon_data: WeaponData) -> void:
+	current_weapon = weapon_data.weapon
+
+	if current_weapon_model:
+		current_weapon_model.queue_free()
+
+	spawn_weapon_model()
+
+	print(current_weapon.weapon_name)
+
+
 func _perform_hitscan() -> void:
 	if not camera:
 		print("no camera assigned")

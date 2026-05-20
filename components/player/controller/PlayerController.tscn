@@ -53,7 +53,7 @@ script = ExtResource("14_iv1n6")
 guard = SubResource("Resource_ih7b1")
 metadata/_custom_type_script = "uid://dgd4i8hrrxfvm"
 
-[node name="PlayerController" type="CharacterBody3D" unique_id=1407980881 node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast", "step_handler")]
+[node name="PlayerController" type="CharacterBody3D" unique_id=1407980881 node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "weapon_controller", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast", "step_handler") groups=["player"]]
 script = ExtResource("1_8rss5")
 debug = true
 acceleration = 20.0
@@ -62,6 +62,7 @@ soft_cap_speed = 0.0
 state_chart = NodePath("StateChart")
 camera = NodePath("CameraController")
 camera_effects = NodePath("CameraController/Camera3D")
+weapon_controller = NodePath("Components/WeaponController")
 standing_collision = NodePath("StandingCollision")
 crouching_collision = NodePath("CrouchingCollision")
 crouch_check = NodePath("CrouchCheck")

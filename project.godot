@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 
 SceneLoader="*uid://dmxyu2xr32wfx"
 LimboConsole="*uid://dyxornv8vwibg"
+Managers="*uid://b5cl1rlm8en2p"
 
 [display]
 
@@ -51,6 +52,10 @@ folder_colors={
 "res://trenchbroom/": "orange",
 "res://trenchbroom/textures/": "purple"
 }
+
+[global_group]
+
+player=""
 
 [input]
 
