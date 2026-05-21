@@ -2,20 +2,18 @@ class_name WeaponController
 extends Node
 
 @export var camera: Camera3D
-@export var current_weapon: Weapon
 @export var weapon_model_parent: Node3D
 @export var weapon_state_chart: StateChart
 
 var current_weapon_model: Node3D
-var current_ammo: int
 var fire_rate_timer: float = 0.0
 var can_fire_next: bool = true
+var current_weapon: Weapon
 
 
 func _ready():
 	if current_weapon:
 		spawn_weapon_model()
-		current_ammo = current_weapon.max_ammo
 
 
 func _process(delta: float) -> void:
@@ -63,7 +61,14 @@ func switch_weapon(weapon_data: WeaponData) -> void:
 
 	spawn_weapon_model()
 
+	weapon_state_chart.send_event("onIdle")
+
 	print(current_weapon.weapon_name)
+
+
+func has_ammo() -> bool:
+	# var weapon_data = Managers.weapon_manager.weapons[Managers.weapon_manager.current_slot]
+	return Managers.weapon_manager.get_current_ammo() > 0
 
 
 func _perform_hitscan() -> void:

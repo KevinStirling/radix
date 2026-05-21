@@ -20,6 +20,8 @@ func _ready() -> void:
 			event.keycode = KEY_1 + (i - 1)
 			InputMap.action_add_event(action_name, event)
 
+	call_deferred("initialize_starting_weapon")
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	for i in range(1, 10):
@@ -44,3 +46,10 @@ func use_ammo(slot: int, amount: int = 1) -> void:
 
 func get_current_ammo() -> int:
 	return weapons[current_slot].ammo
+
+
+func initialize_starting_weapon() -> void:
+	for slot in range(1, 10):
+		if weapons.has(slot) and weapons[slot].unlocked:
+			switch_to_slot(slot)
+			return
