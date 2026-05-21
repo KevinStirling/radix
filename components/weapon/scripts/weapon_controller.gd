@@ -36,13 +36,14 @@ func spawn_weapon_model():
 
 
 func can_fire() -> bool:
-	return current_ammo > 0 and can_fire_next
+	var weapon_data = Managers.weapon_manager.weapons[Managers.weapon_manager.current_slot]
+	return weapon_data.ammo > 0 and can_fire_next
 
 
 func fire_weapon() -> void:
 	if can_fire():
-		current_ammo -= 1
-		print("Fired! Ammo: ", current_ammo)
+		Managers.weapon_manager.use_ammo(Managers.weapon_manager.current_slot)
+		print("Fired! Ammo: ", Managers.weapon_manager.get_current_ammo())
 
 		# start fire rate cooldown
 		can_fire_next = false

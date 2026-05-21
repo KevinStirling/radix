@@ -13,7 +13,7 @@ func _ready() -> void:
 	# add weaopn input actions
 	# might want to put this in the project input map later idk
 	for i in range(1, 10):
-		var action_name = "weapon_" + str(1)
+		var action_name = "weapon_" + str(i)
 		if not InputMap.has_action(action_name):
 			InputMap.add_action(action_name)
 			var event = InputEventKey.new()
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	for i in range(1, 10):
-		if event.is_action_pressed("weapon_" + str(1)):
+		if event.is_action_pressed("weapon_" + str(i)):
 			switch_to_slot(i)
 
 
@@ -38,6 +38,7 @@ func switch_to_slot(slot: int) -> void:
 
 func use_ammo(slot: int, amount: int = 1) -> void:
 	if slot in weapons:
+		print("using ammo from slot ", slot)
 		weapons[slot].ammo = max(0, weapons[slot].ammo - amount)
 
 
