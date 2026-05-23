@@ -1,5 +1,9 @@
 extends Node3D
 
+@export_group("Terminal")
+@export var control_obj: Node
+@export var terminal: Terminal
+
 # Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside = false
 # The last processed input touch/mouse event. To calculate relative movement.
@@ -11,9 +15,6 @@ var last_event_time: float = -1.0
 @onready var node_quad = $Quad
 @onready var node_area = $Quad/Area3D
 
-@export_group("Terminal")
-@export var control_obj : Node
-@export var terminal : Terminal
 
 func _ready():
 	node_area.mouse_entered.connect(self._mouse_entered_area)
@@ -25,19 +26,12 @@ func _ready():
 	# populate terminal with ui scene
 	var ui = terminal.screen_ui.instantiate()
 	node_viewport.add_child(ui)
-	
- 	# hook up signals from terminal buttons... 
+
+	# hook up signals from terminal buttons...
 	# Will have to make "generic singals".. or signals that pass the "action" string
 	# that will tell tis script what object the action should be used on
-	
-	ui.toggle.connect(func(action:String, on:bool): print(action, on))
- 
-func _mouse_entered_area():
-	is_mouse_inside = true
 
-
-func _mouse_exited_area():
-	is_mouse_inside = false
+	ui.toggle.connect(func(action: String, on: bool): print(action, on))
 
 
 func _unhandled_input(event):
@@ -48,6 +42,14 @@ func _unhandled_input(event):
 			# handled via Physics Picking.
 			return
 	node_viewport.push_input(event)
+
+
+func _mouse_entered_area():
+	is_mouse_inside = true
+
+
+func _mouse_exited_area():
+	is_mouse_inside = false
 
 
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):

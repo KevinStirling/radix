@@ -1,8 +1,10 @@
-class_name PlayerStateMachine extends Node
+class_name PlayerStateMachine
+extends Node
 
-@export var debug : bool = false
+@export var debug: bool = false
 @export_category("References")
-@export var player : PlayerController
+@export var player: PlayerController
+
 
 func _process(_delta) -> void:
 	if player:
@@ -13,6 +15,7 @@ func _process(_delta) -> void:
 		player.state_chart.set_expression_property("Camera Rotation", player.camera._rotation)
 		player.state_chart.set_expression_property("Looking at", player.interaction_raycast.current_object)
 		player.state_chart.set_expression_property("Step Status", player.step_handler.step_status)
+
 
 func _physics_process(_delta: float) -> void:
 	player.state_chart.set_expression_property("Mouse input", player.camera.component_mouse_capture._mouse_input)

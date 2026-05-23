@@ -1,17 +1,19 @@
-class_name StepHandlerComponent extends Node
+class_name StepHandlerComponent
+extends Node
+
+const FEET_ADJUSTED_HEIGHT: float = 0.05
+const MIN_STEP_HEIGHT: float = 0.1
+const MIN_MOVEMENT_LENGTH: float = 0.1
+const MIN_DOT_VALUE: float = 0.5
 
 @export_category("References")
-@export var player : PlayerController
+@export var player: PlayerController
 @export_category("Step Settings")
-@export var surface_threshold : float = 0.3
-@export var step_height : float = 0.3
+@export var surface_threshold: float = 0.3
+@export var step_height: float = 0.3
 
-var step_status : String
+var step_status: String
 
-const FEET_ADJUSTED_HEIGHT : float = 0.05
-const MIN_STEP_HEIGHT : float = 0.1
-const MIN_MOVEMENT_LENGTH : float = 0.1
-const MIN_DOT_VALUE : float = 0.5
 
 func handle_step_climbing():
 	step_status = "No verical collision detected"
@@ -29,11 +31,13 @@ func handle_step_climbing():
 				step_status = "Step too high- Height: " + str(measured_height)
 			break
 
+
 func _check_collision_normal(collision: KinematicCollision3D):
 	var normal = collision.get_normal()
 	if abs(normal.y) > surface_threshold:
 		return false
 	return true
+
 
 func _is_vertical_surface(collision: KinematicCollision3D) -> bool:
 	var normal = collision.get_normal()
@@ -41,6 +45,7 @@ func _is_vertical_surface(collision: KinematicCollision3D) -> bool:
 		step_status = "CollisionShape: vertical collision found - " + str(normal)
 		return true
 	return _check_collision_surface(collision)
+
 
 func _check_collision_surface(collision: KinematicCollision3D) -> bool:
 	var space_state = player.get_world_3d().direct_space_state
@@ -61,11 +66,13 @@ func _check_collision_surface(collision: KinematicCollision3D) -> bool:
 	step_status = "No verical collision detected"
 	return false
 
+
 func _get_player_feet_position() -> Vector3:
 	var feet_pos = player.global_position
 	feet_pos.y -= player.standing_collision.shape.height / 2
 	feet_pos.y += FEET_ADJUSTED_HEIGHT # small buffer
 	return feet_pos
+
 
 func _measure_step_height(collision: KinematicCollision3D) -> float:
 	var space_state = player.get_world_3d().direct_space_state
@@ -82,10 +89,11 @@ func _measure_step_height(collision: KinematicCollision3D) -> float:
 	query.exclude = [player.get_rid()]
 
 	var result = space_state.intersect_ray(query)
-	if result: 
+	if result:
 		return result.position.y - player_feet.y
-	
+
 	return 0.0
+
 
 func _is_valid_step_direction(collision: KinematicCollision3D) -> bool:
 	var collision_normal = collision.get_normal()
