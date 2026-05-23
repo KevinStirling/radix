@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://b3hhvdgg6fitt" path="res://components/weapon/scripts/weapon_controller.gd" id="8_ih7b1"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="8_m7hr0"]
 [ext_resource type="Script" uid="uid://h35e2wdmt7ev" path="res://components/player/controller/StateMachine/state_machine.gd" id="9_icx83"]
-[ext_resource type="Resource" uid="uid://ddx7jjhmk5hs1" path="res://components/weapon/resources/pistol.tres" id="9_sk4j6"]
 [ext_resource type="Script" uid="uid://4k07c23cnvfn" path="res://components/player/controller/StateMachine/idle_state.gd" id="10_0xp3s"]
 [ext_resource type="Script" uid="uid://dowgcdoc3ertr" path="res://components/player/controller/StateMachine/grounded_state.gd" id="11_bxhni"]
 [ext_resource type="Script" uid="uid://cc3vah0lc2k5n" path="res://components/player/controller/StateMachine/moving_state.gd" id="12_srl5j"]
@@ -54,6 +53,7 @@ guard = SubResource("Resource_ih7b1")
 metadata/_custom_type_script = "uid://dgd4i8hrrxfvm"
 
 [node name="PlayerController" type="CharacterBody3D" unique_id=1407980881 node_paths=PackedStringArray("state_chart", "camera", "camera_effects", "weapon_controller", "standing_collision", "crouching_collision", "crouch_check", "interaction_raycast", "step_handler") groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_8rss5")
 debug = true
 acceleration = 20.0
@@ -122,7 +122,6 @@ player = NodePath("../..")
 [node name="WeaponController" type="Node" parent="Components" unique_id=577957604 node_paths=PackedStringArray("camera", "weapon_model_parent", "weapon_state_chart")]
 script = ExtResource("8_ih7b1")
 camera = NodePath("../../CameraController/Camera3D")
-current_weapon = ExtResource("9_sk4j6")
 weapon_model_parent = NodePath("../../CameraController/Camera3D")
 weapon_state_chart = NodePath("../../WeaponStateChart")
 

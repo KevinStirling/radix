@@ -53,3 +53,10 @@ func initialize_starting_weapon() -> void:
 		if weapons.has(slot) and weapons[slot].unlocked:
 			switch_to_slot(slot)
 			return
+
+
+func unlock_weapon(slot: int, weapon: Weapon) -> void:
+	# first is optional if slots are pre-determined for each weapon
+	weapons[slot].weapon = weapon
+	weapons[slot].unlocked = true
+	weapons[slot].ammo = weapon.max_ammo

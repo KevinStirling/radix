@@ -140,6 +140,11 @@ weapon_primary_fire={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Environment"
+3d_physics/layer_2="Player"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

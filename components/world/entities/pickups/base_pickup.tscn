@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://x7ryqb2s8rvb"]
+
+[ext_resource type="Script" uid="uid://xyatl1qhdloy" path="res://components/world/entities/pickups/base_pickup.gd" id="1_7a8xg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isi5g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7a8xg"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="BasePickup" type="Area3D" unique_id=454427574]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7a8xg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1164131766]
+shape = SubResource("SphereShape3D_isi5g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=917525628]
+mesh = SubResource("BoxMesh_7a8xg")

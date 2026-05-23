@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cnvj8bbs8hsbb"]
+
+[ext_resource type="PackedScene" uid="uid://x7ryqb2s8rvb" path="res://components/world/entities/pickups/base_pickup.tscn" id="1_6gcu0"]
+[ext_resource type="Script" uid="uid://dyptah1uqjpg4" path="res://components/world/entities/pickups/ammo_pickup.gd" id="2_51hrw"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_51hrw"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="AmmoPickup" unique_id=454427574 instance=ExtResource("1_6gcu0")]
+script = ExtResource("2_51hrw")
+weapon_slot = 1
+ammo_amount = 10
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=917525628]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 0, 0)
+mesh = SubResource("PrismMesh_51hrw")
