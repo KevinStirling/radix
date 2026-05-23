@@ -26,7 +26,7 @@ player = NodePath("../../CurrentScene/PlayerController")
 
 [node name="CurrentScene" type="Node3D" parent="." unique_id=531786042]
 
-[node name="TestroomStandards" parent="CurrentScene" unique_id=809475398 instance=ExtResource("2_w3hab")]
+[node name="TestroomStandards" parent="CurrentScene" unique_id=1541730312 instance=ExtResource("2_w3hab")]
 
 [node name="PlayerController" parent="CurrentScene" unique_id=1407980881 instance=ExtResource("4_ygjfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6257617, 1.4041171, 3.919044)

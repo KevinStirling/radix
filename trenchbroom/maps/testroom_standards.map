@@ -451,3 +451,8 @@
 ( 720 -152 16 ) ( 720 -152 17 ) ( 720 -151 16 ) ceiling/ceiling_1 [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
 }
+// entity 27
+{
+"classname" "item_weapon_pistol"
+"origin" "648 -168 80"
+}

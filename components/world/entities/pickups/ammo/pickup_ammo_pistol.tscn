@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ifn6v70fkbxk"]
+
+[ext_resource type="PackedScene" uid="uid://cnvj8bbs8hsbb" path="res://components/world/entities/pickups/ammo_pickup.tscn" id="1_7g86h"]
+
+[node name="PistolAmmoPickup" unique_id=454427574 instance=ExtResource("1_7g86h")]
