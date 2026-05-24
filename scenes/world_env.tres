@@ -1,9 +1,18 @@
 [gd_resource type="Environment" format=3 uid="uid://q6dyvdvw3bjm"]
 
+[ext_resource type="Texture2D" uid="uid://jejdk8jd7pls" path="res://assets/farm_field_puresky_4k.hdr" id="1_aqhed"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s0gaa"]
+panorama = ExtResource("1_aqhed")
+
+[sub_resource type="Sky" id="Sky_diar4"]
+sky_material = SubResource("PanoramaSkyMaterial_s0gaa")
+
 [resource]
-background_mode = 2
-background_color = Color(0.49354547, 0.49354553, 0.49354553, 1)
-ambient_light_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+background_mode = 1
+sky = SubResource("Sky_diar4")
+ambient_light_source = 2
+ambient_light_color = Color(0.11858135, 0.11858139, 0.11858138, 1)
 ambient_light_sky_contribution = 0.5
 tonemap_mode = 1
 ssao_enabled = true

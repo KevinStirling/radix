@@ -153,3 +153,4 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5

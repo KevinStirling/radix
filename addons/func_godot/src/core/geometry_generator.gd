@@ -8,8 +8,6 @@ const _SIGNATURE: String = "[GEO]"
 const _VERTEX_EPSILON 	:= FuncGodotUtil._VERTEX_EPSILON
 const _VERTEX_EPSILON2 	:= _VERTEX_EPSILON * _VERTEX_EPSILON
 
-const _HYPERPLANE_SIZE	:= 65355.0
-
 const _OriginType 	:= FuncGodotFGDSolidClass.OriginType
 
 const _GroupData		:= FuncGodotData.GroupData
@@ -21,6 +19,7 @@ const _VertexGroupData	:= FuncGodotData.VertexGroupData
 
 # Class members
 var map_settings: FuncGodotMapSettings = null
+var hyperplane_size: float = 512.0
 var entity_data: Array[_EntityData]
 var texture_materials: Dictionary[String, Material]
 var texture_sizes: Dictionary[String, Vector2]
@@ -30,8 +29,9 @@ var texture_sizes: Dictionary[String, Vector2]
 ## Emitted when beginning a new step of the generation process.
 signal declare_step(step: String)
 
-func _init(settings: FuncGodotMapSettings = null) -> void:
+func _init(settings: FuncGodotMapSettings = null, hplane_size: float = 512.0) -> void:
 	map_settings = settings
+	hyperplane_size = hplane_size
 
 #region TOOLS
 func is_skip(face: _FaceData) -> bool:
@@ -99,10 +99,11 @@ func generate_base_winding(plane: Plane) -> PackedVector3Array:
 
 	# construct oversized square on the plane to clip against
 	var winding := PackedVector3Array()
-	winding.append(centroid + (right *  _HYPERPLANE_SIZE) + (forward *  _HYPERPLANE_SIZE))
-	winding.append(centroid + (right * -_HYPERPLANE_SIZE) + (forward *  _HYPERPLANE_SIZE))
-	winding.append(centroid + (right * -_HYPERPLANE_SIZE) + (forward * -_HYPERPLANE_SIZE))
-	winding.append(centroid + (right *  _HYPERPLANE_SIZE) + (forward * -_HYPERPLANE_SIZE))
+	var h: float = hyperplane_size
+	winding.append(centroid + (right *  h) + (forward *  h))
+	winding.append(centroid + (right * -h) + (forward *  h))
+	winding.append(centroid + (right * -h) + (forward * -h))
+	winding.append(centroid + (right *  h) + (forward * -h))
 	return winding
 
 func generate_face_vertices(brush: _BrushData, face_index: int, vertex_merge_distance: float = 0.0) -> PackedVector3Array:
@@ -121,9 +122,17 @@ func generate_face_vertices(brush: _BrushData, face_index: int, vertex_merge_dis
 		if winding.is_empty():
 			break
 	
-	# Reduce seams between vertices
-	for i in winding.size():
-		winding.set(i, winding.get(i).snappedf(vertex_merge_distance))
+	# Perform rounding and merge adjacent vertices that are equivalent
+	if vertex_merge_distance > 0:
+		var merged_winding : PackedVector3Array = PackedVector3Array()
+		var prev_vtx : Vector3 = winding[0].snappedf(vertex_merge_distance)
+		merged_winding.append(prev_vtx)
+		for i in range(1, winding.size()):
+			var cur_vtx : Vector3 = winding[i].snappedf(vertex_merge_distance)
+			if prev_vtx != cur_vtx:
+				merged_winding.append(cur_vtx)
+			prev_vtx = cur_vtx
+		winding = merged_winding
 
 	return winding
 
@@ -206,9 +215,9 @@ func determine_entity_origins(entity_index: int) -> void:
 					var origin_comps: PackedFloat64Array = entity.properties["origin"].split_floats(" ")
 					if origin_comps.size() > 2:
 						if entity.origin_type == _OriginType.ABSOLUTE:
-							entity.origin = Vector3(origin_comps[0], origin_comps[1], origin_comps[2])
+							entity.origin = Vector3(origin_comps[0], origin_comps[1], origin_comps[2]) * map_settings.scale_factor
 						else: # _OriginType.RELATIVE
-							entity.origin += Vector3(origin_comps[0], origin_comps[1], origin_comps[2])
+							entity.origin += Vector3(origin_comps[0], origin_comps[1], origin_comps[2]) * map_settings.scale_factor
 				
 			_OriginType.BRUSH:
 				if origin_mins != Vector3.INF:
@@ -312,7 +321,7 @@ func generate_entity_surfaces(entity_index: int) -> void:
 		def = entity.definition
 	
 	var op_entity_ogl_xf: Callable = func(v: Vector3) -> Vector3:
-		return (FuncGodotUtil.id_to_opengl(v - entity.origin) * map_settings.scale_factor)
+		return (FuncGodotUtil.id_to_opengl(v - entity.origin))
 	
 	# Surface groupings <texture_name, Array[Face]>
 	var surfaces: Dictionary[String, Array] = {}
@@ -372,12 +381,69 @@ func generate_entity_surfaces(entity_index: int) -> void:
 		# Begin fresh index offset for this subarray
 		var index_offset: int = 0
 		
-		for face in faces:
+		for face: _FaceData in faces:
 			# FACE SCOPE BEGIN
 			
 			# Reject invalid faces
 			if face.vertices.size() < 3 or is_skip(face) or is_origin(face):
 				continue
+			
+			#region Reject interior faces only if desired
+			if entity.properties.get(map_settings.cull_interior_faces_property, false):
+				var remove_face := false
+				for face2: _FaceData in faces:
+					if face == face2:
+						continue
+					# Are the planes aligned?
+					if !face2.plane.has_point(face.plane.get_center()):
+						continue
+					# Opposite planes
+					if !(face.plane.normal*-1.0).is_equal_approx(face2.plane.normal):
+						continue;
+
+					# Check for faces that share all their vertices.
+					var all_verts_in_face := true
+					for vert in face.vertices:
+						if !face2.vertices.has(vert):
+							all_verts_in_face = false
+							break;
+					if all_verts_in_face:
+						remove_face = true
+						break
+		
+					# Check if all vertices of Face1 intersect with any triangle of face 2
+					# If they do, then Face 1 is entirely overlapped on Face 2 and we can remove Face 1
+					var all_verts_in_face2 := true
+					for vert in face.vertices:
+						var vert_in_any_tri := false
+						var from := vert - face2.plane.normal*0.001
+						var to := face2.plane.normal*0.001
+						
+						# Loop over all triangles in face 2 and see if the vert intersects any of them
+						for i in ((face2.indices.size()/3)):
+							var intersect = Geometry3D.ray_intersects_triangle(
+								from,
+								to,
+								face2.vertices[face2.indices[i*3]],
+								face2.vertices[face2.indices[i*3 + 1]],
+								face2.vertices[face2.indices[i*3 + 2]]
+							)
+							if !intersect:
+								continue
+							if intersect:
+								vert_in_any_tri = true
+								break;
+						# This vert didn't show up any triangle, can't remove this face
+						if !vert_in_any_tri:
+							all_verts_in_face2 = false
+							break
+					# All verts of face 1 are in face 2, so we can safely remove that face
+					if all_verts_in_face2:
+						remove_face = true
+						break;
+				if remove_face:
+					continue;
+			#endregion
 			
 			# Create trimesh points regardless of texture
 			if build_concave:
@@ -519,9 +585,11 @@ func generate_entity_surfaces(entity_index: int) -> void:
 
 func unwrap_uv2s(entity_index: int, texel_size: float) -> void:
 	var entity: _EntityData = entity_data[entity_index]
-	if entity.mesh:
-		if (entity.definition as FuncGodotFGDSolidClass).global_illumination_mode:
-			entity.mesh.lightmap_unwrap(Transform3D.IDENTITY, texel_size)
+	# NOTE: This skips smoothed meshes as they need to be unwrapped after smoothing.
+	# Ideally smoothing will be performed here in GeoGen before this process.
+	# For now, since it occurs in EntityAssembler, skip it.
+	if entity.mesh and entity.is_gi_enabled() and not entity.is_smooth_shaded(map_settings.entity_smoothing_property):
+		entity.mesh.lightmap_unwrap(Transform3D.IDENTITY, texel_size)
 
 # Main build process
 func build(build_flags: int, entities: Array[_EntityData]) -> Error:
