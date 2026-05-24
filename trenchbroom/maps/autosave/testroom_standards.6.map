@@ -464,10 +464,5 @@
 // entity 29
 {
 "classname" "item_weapon_shotgun"
-"origin" "760 -616 88"
-}
-// entity 30
-{
-"classname" "item_ammo_shotgun"
-"origin" "728 -712 56"
+"origin" "760 -616 72"
 }

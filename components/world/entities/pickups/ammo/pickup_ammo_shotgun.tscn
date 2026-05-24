@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6aqcsmky5jwu"]
+
+[ext_resource type="PackedScene" uid="uid://cnvj8bbs8hsbb" path="res://components/world/entities/pickups/ammo/ammo_pickup.tscn" id="1_5dttf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s27er"]
+albedo_color = Color(0.18039216, 0.5254902, 1, 1)
+emission_enabled = true
+emission = Color(0.18039216, 0.5254902, 1, 1)
+emission_energy_multiplier = 4.0
+rim_enabled = true
+
+[node name="ShotgunAmmoPickup" unique_id=454427574 instance=ExtResource("1_5dttf")]
+transform = Transform3D(0.018898271, 0, 0.9991067, 0, 1, 0, -0.9991067, 0, 0.018898271, 0, -0.09867395, 0)
+weapon_slot = 2
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=917525628]
+material_override = SubResource("StandardMaterial3D_s27er")

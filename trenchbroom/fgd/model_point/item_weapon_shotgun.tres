@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" format=3 uid="uid://d06sovh4wy1uk"]
+
+[ext_resource type="Script" uid="uid://ldfqjtq0br35" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="1_6fefc"]
+[ext_resource type="PackedScene" uid="uid://c4a0hsjeo8brf" path="res://components/world/entities/pickups/weapons/pickup_weapon_shotgun.tscn" id="1_67f5h"]
+
+[resource]
+script = ExtResource("1_6fefc")
+target_map_editor = 1
+models_sub_folder = "trenchbroom/models"
+scene_file = ExtResource("1_67f5h")
+classname = "item_weapon_shotgun"
+metadata/_custom_type_script = "uid://ldfqjtq0br35"

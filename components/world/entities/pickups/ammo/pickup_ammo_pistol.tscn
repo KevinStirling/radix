@@ -1,5 +1,15 @@
 [gd_scene format=3 uid="uid://ifn6v70fkbxk"]
 
-[ext_resource type="PackedScene" uid="uid://cnvj8bbs8hsbb" path="res://components/world/entities/pickups/ammo_pickup.tscn" id="1_7g86h"]
+[ext_resource type="PackedScene" uid="uid://cnvj8bbs8hsbb" path="res://components/world/entities/pickups/ammo/ammo_pickup.tscn" id="1_7g86h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stjnf"]
+albedo_color = Color(0.26666668, 0.6, 0.1764706, 1)
+emission_enabled = true
+emission = Color(0.26666668, 0.6, 0.1764706, 1)
+emission_energy_multiplier = 4.0
+rim_enabled = true
 
 [node name="PistolAmmoPickup" unique_id=454427574 instance=ExtResource("1_7g86h")]
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=917525628]
+material_override = SubResource("StandardMaterial3D_stjnf")

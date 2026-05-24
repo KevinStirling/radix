@@ -1,12 +1,15 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDFile" format=3 uid="uid://c0mibahbemyvo"]
 
 [ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_lbbfn"]
-[ext_resource type="Resource" uid="uid://djg6xxybjdd0b" path="res://components/world/entities/light/omni_light.tres" id="1_r2kj1"]
 [ext_resource type="Script" uid="uid://drlmgulwbjwqu" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="2_7x3ut"]
-[ext_resource type="Resource" uid="uid://cqk7eyyafwwdd" path="res://components/world/entities/pickups/weapons/item_weapon_pistol.tres" id="3_ce0wi"]
+[ext_resource type="Resource" uid="uid://djg6xxybjdd0b" path="res://trenchbroom/fgd/point/omni_light.tres" id="2_c7er0"]
+[ext_resource type="Resource" uid="uid://cqk7eyyafwwdd" path="res://trenchbroom/fgd/model_point/item_weapon_pistol.tres" id="3_wcftq"]
+[ext_resource type="Resource" uid="uid://b5ie6rxhnb3v8" path="res://trenchbroom/fgd/model_point/item_ammo_pistol.tres" id="4_m8oan"]
+[ext_resource type="Resource" uid="uid://d06sovh4wy1uk" path="res://trenchbroom/fgd/model_point/item_weapon_shotgun.tres" id="5_wcftq"]
+[ext_resource type="Resource" uid="uid://cyx1cn7h6gkph" path="res://trenchbroom/fgd/model_point/item_ammo_shotgun.tres" id="6_m8oan"]
 
 [resource]
 script = ExtResource("2_7x3ut")
 base_fgd_files = Array[Resource]([ExtResource("1_lbbfn")])
-entity_definitions = Array[Resource]([ExtResource("1_r2kj1"), ExtResource("3_ce0wi")])
+entity_definitions = Array[Resource]([ExtResource("2_c7er0"), ExtResource("3_wcftq"), ExtResource("4_m8oan"), ExtResource("5_wcftq"), ExtResource("6_m8oan")])
 metadata/_custom_type_script = "uid://drlmgulwbjwqu"

@@ -456,18 +456,3 @@
 "classname" "item_weapon_pistol"
 "origin" "648 -168 80"
 }
-// entity 28
-{
-"classname" "item_ammo_pistol"
-"origin" "632 -344 72"
-}
-// entity 29
-{
-"classname" "item_weapon_shotgun"
-"origin" "760 -616 88"
-}
-// entity 30
-{
-"classname" "item_ammo_shotgun"
-"origin" "728 -712 56"
-}

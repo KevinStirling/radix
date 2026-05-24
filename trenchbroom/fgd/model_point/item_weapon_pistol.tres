@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" format=3 uid="uid://cqk7eyyafwwdd"]
+
+[ext_resource type="PackedScene" uid="uid://bpjqk0cexgjsp" path="res://components/world/entities/pickups/weapons/pickup_weapon_pistol.tscn" id="1_e6hqf"]
+[ext_resource type="Script" uid="uid://ldfqjtq0br35" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="2_6btmb"]
+
+[resource]
+script = ExtResource("2_6btmb")
+target_map_editor = 1
+models_sub_folder = "trenchbroom/models"
+generate_size_property = true
+scene_file = ExtResource("1_e6hqf")
+classname = "item_weapon_pistol"
+meta_properties = {
+"color": Color(0.8, 0.8, 0.8, 1),
+"model": "\"trenchbroom/models/item_weapon_pistol.glb\"",
+"size": AABB(-8, -8, -16, 8, 8, 16)
+}
+metadata/_custom_type_script = "uid://ldfqjtq0br35"

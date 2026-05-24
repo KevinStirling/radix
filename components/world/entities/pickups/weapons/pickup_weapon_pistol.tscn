@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://bpjqk0cexgjsp"]
 
-[ext_resource type="PackedScene" uid="uid://dqiockspdxftr" path="res://components/world/entities/pickups/weapon_pickup.tscn" id="1_8si0s"]
+[ext_resource type="PackedScene" uid="uid://dqiockspdxftr" path="res://components/world/entities/pickups/weapons/weapon_pickup.tscn" id="1_8si0s"]
 [ext_resource type="Resource" uid="uid://ddx7jjhmk5hs1" path="res://components/weapon/resources/pistol.tres" id="2_yh84y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0mob"]
+albedo_color = Color(0.26666668, 0.6, 0.1764706, 1)
+emission_enabled = true
+emission = Color(0.26666668, 0.6, 0.1764706, 1)
+emission_energy_multiplier = 4.0
+rim_enabled = true
 
 [node name="PistolPickup" unique_id=454427574 instance=ExtResource("1_8si0s")]
 weapon_slot = 1
 weapon_resource = ExtResource("2_yh84y")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=917525628]
+material_override = SubResource("StandardMaterial3D_j0mob")

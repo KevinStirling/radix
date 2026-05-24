@@ -1,3 +1,4 @@
+@tool
 class_name AmmoPickup
 extends BasePickup
 
@@ -25,3 +26,7 @@ func apply_pickup(_player: PlayerController) -> void:
 	# add ammo
 	weapon_data.ammo += ammo_to_add
 	print("picked up ", ammo_to_add, " ammo for ", weapon_data.weapon.weapon_name)
+
+
+func _func_godot_apply_properties(entity_properties: Dictionary) -> void:
+	ammo_amount = entity_properties["ammo_amount"] as int

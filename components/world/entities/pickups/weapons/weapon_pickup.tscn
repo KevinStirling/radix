@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqiockspdxftr"]
 
 [ext_resource type="PackedScene" uid="uid://x7ryqb2s8rvb" path="res://components/world/entities/pickups/base_pickup.tscn" id="1_f3jax"]
-[ext_resource type="Script" uid="uid://e61pxyuk7fym" path="res://components/world/entities/pickups/weapon_pickup.gd" id="2_ist02"]
+[ext_resource type="Script" uid="uid://e61pxyuk7fym" path="res://components/world/entities/pickups/weapons/weapon_pickup.gd" id="2_ist02"]
 [ext_resource type="Resource" uid="uid://dtcrps0ih31fr" path="res://components/weapon/resources/shotgun.tres" id="3_tsyrf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ist02"]

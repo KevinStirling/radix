@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnvj8bbs8hsbb"]
 
 [ext_resource type="PackedScene" uid="uid://x7ryqb2s8rvb" path="res://components/world/entities/pickups/base_pickup.tscn" id="1_6gcu0"]
-[ext_resource type="Script" uid="uid://dyptah1uqjpg4" path="res://components/world/entities/pickups/ammo_pickup.gd" id="2_51hrw"]
+[ext_resource type="Script" uid="uid://dyptah1uqjpg4" path="res://components/world/entities/pickups/ammo/ammo_pickup.gd" id="2_51hrw"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_51hrw"]
 size = Vector3(0.5, 0.5, 0.5)
