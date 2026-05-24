@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dty5qlxg6fint"]
+
+[ext_resource type="PackedScene" uid="uid://x7ryqb2s8rvb" path="res://components/world/entities/pickups/base_pickup.tscn" id="1_04bh4"]
+[ext_resource type="Script" uid="uid://bsbps171m1klk" path="res://components/world/entities/pickups/health_pickup.gd" id="2_sqliy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04bh4"]
+albedo_color = Color(0.45490196, 1, 0.35686275, 1)
+emission_enabled = true
+emission = Color(0.45490196, 1, 0.35686275, 1)
+rim_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sqliy"]
+radius = 0.25
+height = 1.0
+
+[node name="HealthPickup" unique_id=454427574 instance=ExtResource("1_04bh4")]
+script = ExtResource("2_sqliy")
+heal_amount = 25.0
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=917525628]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, -0.42261827, 0, 0.42261827, 0.90630776, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_04bh4")
+mesh = SubResource("CapsuleMesh_sqliy")

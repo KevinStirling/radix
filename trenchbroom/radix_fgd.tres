@@ -7,9 +7,10 @@
 [ext_resource type="Resource" uid="uid://b5ie6rxhnb3v8" path="res://trenchbroom/fgd/model_point/item_ammo_pistol.tres" id="4_m8oan"]
 [ext_resource type="Resource" uid="uid://d06sovh4wy1uk" path="res://trenchbroom/fgd/model_point/item_weapon_shotgun.tres" id="5_wcftq"]
 [ext_resource type="Resource" uid="uid://cyx1cn7h6gkph" path="res://trenchbroom/fgd/model_point/item_ammo_shotgun.tres" id="6_m8oan"]
+[ext_resource type="Resource" uid="uid://ybupri26kmip" path="res://trenchbroom/fgd/model_point/item_modifier_health.tres" id="7_qsp5x"]
 
 [resource]
 script = ExtResource("2_7x3ut")
 base_fgd_files = Array[Resource]([ExtResource("1_lbbfn")])
-entity_definitions = Array[Resource]([ExtResource("2_c7er0"), ExtResource("3_wcftq"), ExtResource("4_m8oan"), ExtResource("5_wcftq"), ExtResource("6_m8oan")])
+entity_definitions = Array[Resource]([ExtResource("2_c7er0"), ExtResource("3_wcftq"), ExtResource("4_m8oan"), ExtResource("5_wcftq"), ExtResource("6_m8oan"), ExtResource("7_qsp5x")])
 metadata/_custom_type_script = "uid://drlmgulwbjwqu"

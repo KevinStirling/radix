@@ -108,6 +108,19 @@ func _perform_hitscan() -> void:
 		if result:
 			print("Hit: ", result.collider.name, " at ", result.position)
 			_spawn_impact_marker(result.position)
+			_apply_damage_to_target(result.collider)
+
+
+## Tries to apply damage(if applicable) to a Node3D
+func _apply_damage_to_target(target: Node3D) -> void:
+	# not the perfect solution to this, but good enough for concepting
+	# with this method, HealthComponent must always have this name and
+	# always be a direct child of the root scene node
+	# check if target has HealthComponent
+	var health_component = target.get_node_or_null("HealthComponent")
+
+	if health_component and health_component.has_method("take_damage"):
+		health_component.take_damage(current_weapon.damage, owner)
 
 
 ## Debug function to visualize where a hitscan weapon hits

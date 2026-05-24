@@ -69,6 +69,14 @@ func _physics_process(delta: float) -> void:
 		step_handler.handle_step_climbing()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_take_dmg"):
+		var health_comp = get_node_or_null("HealthComponent")
+		if health_comp:
+			health_comp.take_damage(10.0)
+			print("player took damage")
+
+
 ## updates player rotation based on a rotation input
 ## used by CameraController to update the player rotation based on mouse input
 func update_rotation(rotation_input) -> void:

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" format=3 uid="uid://cyx1cn7h6gkph"]
 
 [ext_resource type="PackedScene" uid="uid://6aqcsmky5jwu" path="res://components/world/entities/pickups/ammo/pickup_ammo_shotgun.tscn" id="1_5vw77"]
-[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_347be"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_347be"]
 [ext_resource type="Script" uid="uid://ldfqjtq0br35" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="1_n78fm"]
 
 [resource]

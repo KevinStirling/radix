@@ -471,3 +471,18 @@
 "classname" "item_ammo_shotgun"
 "origin" "728 -712 56"
 }
+// entity 31
+{
+"classname" "item_modifier_health"
+"origin" "744 -72 16"
+}
+// entity 32
+{
+"classname" "item_modifier_health"
+"origin" "744 -120 16"
+}
+// entity 33
+{
+"classname" "item_modifier_health"
+"origin" "744 -168 16"
+}

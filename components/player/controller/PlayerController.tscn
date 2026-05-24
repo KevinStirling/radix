@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2s7blxwi1oxc" path="res://components/player/controller/player_controller.gd" id="1_8rss5"]
 [ext_resource type="Script" uid="uid://ll2t0gay735r" path="res://components/player/controller/MouseCapture/mouse_capture.gd" id="1_ai8y1"]
+[ext_resource type="PackedScene" uid="uid://tfql0kh8lqb" path="res://components/health/health_component.tscn" id="2_4ik7k"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_hp8ap"]
 [ext_resource type="Script" uid="uid://brjcrfc5kwpo0" path="res://components/player/controller/CameraController/camera_controller.gd" id="3_vjk30"]
 [ext_resource type="Script" uid="uid://bqxqcwcgwoihm" path="res://components/player/controller/CameraEffects/camera_effects.gd" id="4_olyrw"]
@@ -68,6 +69,8 @@ crouching_collision = NodePath("CrouchingCollision")
 crouch_check = NodePath("CrouchCheck")
 interaction_raycast = NodePath("CameraController/Camera3D/InteractionRaycast")
 step_handler = NodePath("Components/StepHandler")
+
+[node name="HealthComponent" parent="." unique_id=1102549431 instance=ExtResource("2_4ik7k")]
 
 [node name="StateChartDebugger" parent="." unique_id=686292344 instance=ExtResource("2_hp8ap")]
 unique_name_in_owner = true

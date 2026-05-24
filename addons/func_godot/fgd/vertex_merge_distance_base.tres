@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDBaseClass" load_steps=2 format=3 uid="uid://doo4ly322b4jc"]
+[gd_resource type="Resource" script_class="FuncGodotFGDBaseClass" format=3 uid="uid://doo4ly322b4jc"]
 
 [ext_resource type="Script" uid="uid://ck575aqs1sbrb" path="res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd" id="1_h3atm"]
 
@@ -12,4 +12,6 @@ class_properties = Dictionary[String, Variant]({
 class_property_descriptions = Dictionary[String, Variant]({
 "_vertex_merge_distance": "Adjustable value to snap vertices to on map build. This can reduce instances of seams between polygons."
 })
+meta_properties = Dictionary[String, Variant]({})
+node_groups = null
 metadata/_custom_type_script = "uid://ck575aqs1sbrb"

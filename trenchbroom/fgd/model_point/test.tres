@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDModelPointClass" format=3 uid="uid://c3aadhsrtlh0x"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_614vm"]
+[ext_resource type="Script" uid="uid://ldfqjtq0br35" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="2_a1wfm"]
+[ext_resource type="PackedScene" uid="uid://6aqcsmky5jwu" path="res://components/world/entities/pickups/ammo/pickup_ammo_shotgun.tscn" id="2_dy8xj"]
+
+[resource]
+script = ExtResource("2_a1wfm")
+target_map_editor = 1
+models_sub_folder = "trenchbroom/models"
+generate_size_property = true
+scene_file = ExtResource("2_dy8xj")
+script_class = true
+apply_rotation_on_map_build = Array[ExtResource("1_614vm")]([])
+apply_scale_on_map_build = null
+display_descriptors = null
+classname = "test"
+node_groups = null
+metadata/_custom_type_script = "uid://ldfqjtq0br35"
