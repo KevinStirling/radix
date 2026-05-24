@@ -21,7 +21,6 @@ ssil_intensity = 0.5
 glow_enabled = true
 glow_strength = 1.4
 glow_bloom = 0.3
-glow_blend_mode = 4
 fog_mode = 1
 fog_density = 0.4
 volumetric_fog_density = 0.03
