@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" format=3 uid="uid://djg6xxybjdd0b"]
 
 [ext_resource type="PackedScene" uid="uid://dx3twg33vra01" path="res://components/world/entities/light/omni_light.tscn" id="1_4xq6e"]
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_h1jjc"]
 [ext_resource type="Script" uid="uid://cxsqwtsqd8w33" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="2_h1jjc"]
 
 [resource]
@@ -8,6 +9,6 @@ script = ExtResource("2_h1jjc")
 scene_file = ExtResource("1_4xq6e")
 classname = "light_omni"
 description = "Spawns a godot omni light node"
-class_properties = {
+class_properties = Dictionary[String, Variant]({
 "is_test": false
-}
+})

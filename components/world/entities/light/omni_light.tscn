@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx3twg33vra01"]
+[gd_scene format=3 uid="uid://dx3twg33vra01"]
 
-[ext_resource type="Script" path="res://components/world/entities/light/omni_light.gd" id="1_76uj5"]
+[ext_resource type="Script" uid="uid://chm14cptf61hw" path="res://components/world/entities/light/omni_light.gd" id="1_76uj5"]
 
-[node name="Light" type="OmniLight3D"]
+[node name="Light" type="OmniLight3D" unique_id=2104490169]
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 2.0
 script = ExtResource("1_76uj5")

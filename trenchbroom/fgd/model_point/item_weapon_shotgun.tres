@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ldfqjtq0br35" path="res://addons/func_godot/src/fgd/func_godot_fgd_model_point_class.gd" id="1_6fefc"]
 [ext_resource type="PackedScene" uid="uid://c4a0hsjeo8brf" path="res://components/world/entities/pickups/weapons/pickup_weapon_shotgun.tscn" id="1_67f5h"]
+[ext_resource type="Script" uid="uid://d1nwwgcrner8b" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class_display_descriptor.gd" id="1_xj4lw"]
 
 [resource]
 script = ExtResource("1_6fefc")
@@ -9,4 +10,9 @@ target_map_editor = 1
 models_sub_folder = "trenchbroom/models"
 scene_file = ExtResource("1_67f5h")
 classname = "item_weapon_shotgun"
+meta_properties = Dictionary[String, Variant]({
+"color": Color(0.8, 0.8, 0.8, 1),
+"model": "{\"path\": \"trenchbroom/models/item_weapon_shotgun.glb\", \"scale\": 32.0 }",
+"size": AABB(-8, -8, -8, 8, 8, 8)
+})
 metadata/_custom_type_script = "uid://ldfqjtq0br35"
