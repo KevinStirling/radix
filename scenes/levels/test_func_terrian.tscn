@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_g51bg"]
 [ext_resource type="Resource" uid="uid://cc5i4v0nyqvkp" path="res://trenchbroom/radix_map_settings.tres" id="2_aa788"]
 [ext_resource type="Material" uid="uid://n3ek2fexpwya" path="res://trenchbroom/textures/layers/lava.tres" id="3_cml0t"]
-[ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="3_xkvda"]
+[ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://trenchbroom/textures/special/default_texture.png" id="3_xkvda"]
 [ext_resource type="PackedScene" uid="uid://c8syqhb1nkc3g" path="res://components/player/controller/PlayerController.tscn" id="4_awy1t"]
 [ext_resource type="Material" uid="uid://d0vdy2i0bhtk3" path="res://trenchbroom/textures/metal/metal_mp_4.tres" id="4_em4sl"]
 [ext_resource type="Environment" uid="uid://q6dyvdvw3bjm" path="res://scenes/world_env.tres" id="7_cml0t"]
