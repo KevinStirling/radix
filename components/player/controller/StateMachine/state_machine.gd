@@ -9,7 +9,6 @@ extends Node
 func _process(_delta) -> void:
 	if player:
 		# debug ui expressions
-		player.state_chart.set_expression_property("Player speed", player.speed)
 		player.state_chart.set_expression_property("Player Velocity", player.velocity)
 		player.state_chart.set_expression_property("Player Head Collision", player.crouch_check.is_colliding())
 		player.state_chart.set_expression_property("Camera Rotation", player.camera._rotation)

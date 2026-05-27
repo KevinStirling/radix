@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u02yvkco5k0" path="res://components/enemy/simple_enemy.gd" id="1_amps8"]
 [ext_resource type="PackedScene" uid="uid://tfql0kh8lqb" path="res://components/health/health_component.tscn" id="1_qifm3"]
+[ext_resource type="PackedScene" uid="uid://cflilk3bhuj8b" path="res://components/enemy/placeholder_enemy.glb" id="2_2206g"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="2_amps8"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="3_2206g"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="4_idoiq"]
@@ -17,9 +18,43 @@ albedo_color = Color(1, 0.2, 0.2, 1)
 size = Vector3(0.8, 1.8, 0.8)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o3poi"]
+radius = 0.35
+height = 1.8
 
 [node name="SimpleEnemy" type="CharacterBody3D" unique_id=13649023]
 script = ExtResource("1_amps8")
+follow_speed = 1.5
+
+[node name="placeholder_enemy" parent="." unique_id=896806302 instance=ExtResource("2_2206g")]
+
+[node name="Skeleton3D" parent="placeholder_enemy/Skinned Mesh 0" parent_id_path=PackedInt32Array(896806302, 977227875) index="0" unique_id=2114570293]
+bones/1/position = Vector3(0.005341068, 0.08659626, 0.87711865)
+bones/1/rotation = Quaternion(0.75642556, -0.08835288, -0.07518721, 0.6437089)
+bones/3/rotation = Quaternion(0.013914963, 0.00012369617, 0.00024920644, 0.99990314)
+bones/4/rotation = Quaternion(-0.006462185, 0.00033505532, 0.0002265971, 0.99997914)
+bones/5/rotation = Quaternion(0.24861185, -0.00017408839, -0.00029054182, 0.9686032)
+bones/6/rotation = Quaternion(-0.21099606, 2.4214387e-08, -2.7765054e-08, 0.97748697)
+bones/8/rotation = Quaternion(-0.5877612, -0.28389117, -0.39197797, 0.6483024)
+bones/9/rotation = Quaternion(-0.221421, 0.7100033, -0.5005152, 0.44311696)
+bones/10/rotation = Quaternion(0.28216097, 0.042512022, -0.004866693, 0.9584124)
+bones/11/rotation = Quaternion(0.106008805, 0.0063757543, -0.025674568, 0.99401325)
+bones/32/rotation = Quaternion(-0.6146078, 0.22277792, 0.321145, 0.6851957)
+bones/33/rotation = Quaternion(0.22908606, 0.71703905, -0.47276932, -0.45810893)
+bones/34/rotation = Quaternion(0.36717644, -0.15495983, 0.062180232, 0.9150424)
+bones/35/rotation = Quaternion(0.1167091, 0.0029166369, 0.044778626, 0.9921519)
+bones/39/rotation = Quaternion(4.656564e-09, 1, -1.1175887e-08, -3.645257e-06)
+bones/43/rotation = Quaternion(-1.0151421e-07, 1, -1.1175677e-08, -3.6582956e-06)
+bones/47/rotation = Quaternion(-9.313332e-10, 1, -1.03916875e-13, -3.6582958e-06)
+bones/51/rotation = Quaternion(-1.7695198e-08, 1, -1.4901094e-08, -3.5353614e-06)
+bones/52/rotation = Quaternion(-0.290838, 0.9496492, 0.11458375, -0.021217374)
+bones/56/rotation = Quaternion(0.96360105, 0.11048079, -0.013621948, 0.24306697)
+bones/57/rotation = Quaternion(0.18558599, -0.11207046, 0.021300659, 0.97598374)
+bones/58/rotation = Quaternion(-0.495605, 0.022344304, 0.092289664, 0.86334187)
+bones/59/rotation = Quaternion(-0.00013714567, 0.9643068, -0.26478747, -0.0004995333)
+bones/61/rotation = Quaternion(0.9931882, -0.11493799, 0.014171594, 0.012873223)
+bones/62/rotation = Quaternion(0.11593042, 0.35827455, -0.044898104, 0.9253019)
+bones/63/rotation = Quaternion(-0.5782304, -0.04973477, -0.1638987, 0.7976926)
+bones/64/rotation = Quaternion(-0.0001370181, 0.9643068, -0.26478747, -0.0004995269)
 
 [node name="DetectionArea" type="Area3D" parent="." unique_id=1099960513]
 collision_layer = 0
@@ -31,18 +66,19 @@ shape = SubResource("SphereShape3D_amps8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=431834434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_o3poi")
 mesh = SubResource("BoxMesh_o3poi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1887133103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_o3poi")
 
 [node name="HealthComponent" parent="." unique_id=1102549431 instance=ExtResource("1_qifm3")]
 max_health = 50.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1925472226]
-target_desired_distance = 1.1
+target_desired_distance = 2.0
 avoidance_enabled = true
 radius = 1.0
 debug_enabled = true
@@ -75,3 +111,5 @@ delay_in_seconds = "0.0"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/FollowState" to="." method="_on_follow_state_physics_processing"]
+
+[editable path="placeholder_enemy"]

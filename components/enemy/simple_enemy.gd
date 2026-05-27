@@ -9,6 +9,7 @@ var target: Node3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var state_chart: StateChart = $StateChart
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var animation_player: AnimationPlayer = $placeholder_enemy/AnimationPlayer
 
 
 func _ready():
@@ -18,6 +19,10 @@ func _ready():
 
 	health_component.died.connect(_on_died)
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
+
+	if animation_player:
+		animation_player.play("Idle")
+		animation_player.seek(randf_range(0, animation_player.current_animation_length))
 
 
 func _physics_process(delta: float) -> void:
@@ -50,6 +55,8 @@ func _on_follow_state_physics_processing(delta: float) -> void:
 	# check if nav is finsihed
 	if nav_agent.is_navigation_finished():
 		nav_agent.velocity = Vector3.ZERO
+		if animation_player and animation_player.current_animation != "Idle":
+			animation_player.play("Idle")
 		return
 
 	# get next position in path
@@ -58,6 +65,9 @@ func _on_follow_state_physics_processing(delta: float) -> void:
 
 	# set desired velo
 	nav_agent.velocity = direction * follow_speed
+
+	if animation_player and animation_player.current_animation != "Walk":
+		animation_player.play("Walk")
 
 	# rotate to face move direction
 	if direction.length() > 0.01:
