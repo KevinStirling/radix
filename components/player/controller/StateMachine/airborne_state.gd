@@ -3,7 +3,7 @@ extends PlayerState
 
 func _on_airborne_state_physics_processing(delta: float) -> void:
 	if player.direction:
-		_air_accelerate(delta, player.direction, player.air_speed, player.air_acceleration)
+		_air_accelerate(delta, player.direction, player.direction.length(), player.air_acceleration)
 
 	if player.is_on_floor():
 		if player.check_fall_speed():
@@ -21,6 +21,11 @@ func _air_accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: fl
 	var addspeed: float
 	var accelspeed: float
 	var currentspeed: float
+	var wishspd: float = wishspeed
+
+	# TODO might want to make params like this a global engine param, not just on player
+	if (wishspd > player.soft_cap_speed):
+		wishspd = player.soft_cap_speed
 
 	# check for direction change
 	currentspeed = player.velocity.dot(wishdir)
@@ -38,6 +43,6 @@ func _air_accelerate(delta: float, wishdir: Vector3, wishspeed: float, accel: fl
 	if accelspeed > addspeed:
 		accelspeed = addspeed
 
-	# player.velocity += accelspeed * wishdir
-	player.velocity.x += accelspeed * wishdir.x
-	player.velocity.z += accelspeed * wishdir.z
+	player.velocity += accelspeed * wishdir
+	# player.velocity.x += accelspeed * wishdir.x
+	# player.velocity.z += accelspeed * wishdir.z
