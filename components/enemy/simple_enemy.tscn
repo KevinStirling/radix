@@ -111,5 +111,6 @@ delay_in_seconds = "0.0"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/FollowState" to="." method="_on_follow_state_physics_processing"]
+[connection signal="state_processing" from="StateChart/CompoundState/FollowState" to="." method="_on_follow_state_processing"]
 
 [editable path="placeholder_enemy"]

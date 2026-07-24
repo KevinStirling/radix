@@ -45,12 +45,15 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity.x = safe_velocity.x
 	velocity.z = safe_velocity.z
 
-
-func _on_follow_state_physics_processing(delta: float) -> void:
+func _on_follow_state_processing(_delta: float) -> void:
 	if not target:
 		return
 
 	nav_agent.target_position = target.global_position
+
+func _on_follow_state_physics_processing(delta: float) -> void:
+	if not target:
+		return
 
 	# check if nav is finsihed
 	if nav_agent.is_navigation_finished():
