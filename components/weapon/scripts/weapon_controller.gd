@@ -41,6 +41,8 @@ func can_fire() -> bool:
 func fire_weapon() -> void:
 	if can_fire():
 		Managers.weapon_manager.use_ammo(Managers.weapon_manager.current_slot)
+		var kick_pitch = current_weapon.damage * camera.weapon_kick_pitch_limit
+		camera.add_weapon_kick(kick_pitch, kick_pitch / 2.0, 1.0)
 		print("Fired! Ammo: ", Managers.weapon_manager.get_current_ammo())
 
 		# start fire rate cooldown

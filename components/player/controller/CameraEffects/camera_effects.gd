@@ -52,9 +52,6 @@ var _step_timer: float = 0.0
 
 func _process(delta: float) -> void:
 	calculate_view_offset(delta)
-	if Input.is_action_just_pressed("test"):
-		# add_screen_shake(0.2, 1.0)
-		add_weapon_kick(6.0, 2.0, 1.0)
 
 
 ## calculates how to offset the view of the camera given the player velocity
