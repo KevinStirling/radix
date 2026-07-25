@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dhubh8xh5upfi"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dhubh8xh5upfi"]
 
 [ext_resource type="Texture2D" uid="uid://b7sxuq2kvwuf6" path="res://trenchbroom/textures/lights/testlight.png" id="1_jjexx"]
 

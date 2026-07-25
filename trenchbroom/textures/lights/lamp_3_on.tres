@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://gowvx6iv6wqy"]
+
+[ext_resource type="Texture2D" uid="uid://beaa6wlt6e7wh" path="res://trenchbroom/textures/lights/lamp_3_on.png" id="1_xtk1a"]
+[ext_resource type="Texture2D" uid="uid://dwoos3beyhc8x" path="res://trenchbroom/textures/lights/lamp_3_emission.png" id="2_orp6e"]
+
+[resource]
+albedo_texture = ExtResource("1_xtk1a")
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.9490462, 0.87404317, 0.51038116, 1)
+emission_energy_multiplier = 2.0
+emission_operator = 1
+emission_texture = ExtResource("2_orp6e")
+texture_filter = 2

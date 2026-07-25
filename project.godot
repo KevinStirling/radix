@@ -37,7 +37,7 @@ project/assembly_name="fps_test"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/limbo_console/plugin.cfg")
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/limbo_console/plugin.cfg", "res://addons/vimdow/plugin.cfg")
 
 [file_customization]
 
@@ -57,6 +57,7 @@ folder_colors={
 
 player=""
 geometry="FuncGodotMap nodes belong here. Used by NavigationAgents"
+map_entities=""
 
 [input]
 
@@ -150,6 +151,7 @@ debug_take_dmg={
 
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Trigger"
 
 [physics]
 

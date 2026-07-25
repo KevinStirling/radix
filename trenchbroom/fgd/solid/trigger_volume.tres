@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://du2abreqdf7ev"]
+
+[ext_resource type="Resource" uid="uid://bswxu0qvp640q" path="res://trenchbroom/fgd/base/trigger_base.tres" id="1_k0weu"]
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_momcy"]
+[ext_resource type="Script" uid="uid://ckap2okjppf7f" path="res://components/world/trigger/trigger_volume.gd" id="3_f2fuq"]
+
+[resource]
+script = ExtResource("1_momcy")
+build_visuals = false
+global_illumination_mode = 0
+use_in_baked_light = false
+shadow_casting_setting = 0
+render_layers = 0
+collision_layer = 4
+collision_mask = 2
+script_class = ExtResource("3_f2fuq")
+classname = "trigger_volume"
+base_classes = Array[Resource]([ExtResource("1_k0weu")])
+class_properties = Dictionary[String, Variant]({
+"test": ""
+})
+node_class = "TriggerVolume"
+metadata/_custom_type_script = "uid://5cow84q03m6a"

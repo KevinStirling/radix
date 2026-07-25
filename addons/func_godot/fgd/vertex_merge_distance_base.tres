@@ -13,5 +13,4 @@ class_property_descriptions = Dictionary[String, Variant]({
 "_vertex_merge_distance": "Adjustable value to snap vertices to on map build. This can reduce instances of seams between polygons."
 })
 meta_properties = Dictionary[String, Variant]({})
-node_groups = null
 metadata/_custom_type_script = "uid://ck575aqs1sbrb"

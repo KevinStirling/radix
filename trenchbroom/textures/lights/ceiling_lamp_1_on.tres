@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xnwvrhsodhds"]
+
+[ext_resource type="Texture2D" uid="uid://dp0mvuydd5ka5" path="res://trenchbroom/textures/lights/ceiling_lamp_1_on.png" id="1_beu5r"]
+[ext_resource type="Texture2D" uid="uid://v4tcpn41sjkr" path="res://trenchbroom/textures/lights/ceiling_lamp_1_on_emission.png" id="2_7dy4s"]
+
+[resource]
+albedo_texture = ExtResource("1_beu5r")
+metallic_specular = 0.0
+emission_enabled = true
+emission_texture = ExtResource("2_7dy4s")
+texture_filter = 2

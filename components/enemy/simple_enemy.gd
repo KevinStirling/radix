@@ -10,6 +10,7 @@ var target: Node3D
 @onready var state_chart: StateChart = $StateChart
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var animation_player: AnimationPlayer = $placeholder_enemy/AnimationPlayer
+@onready var triggerable: TriggerableComponent = $TriggerableComponent
 
 
 func _ready():
@@ -28,12 +29,22 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		# TODO: might want to expose the fall_gravity_multiplier as a cvar that every node can look up
-		velocity += get_gravity() * fall_gravity_multiplier * delta
+		# velocity += get_gravity() * fall_gravity_multiplier * delta
+		velocity.y -= 20.0 * delta
 
 	move_and_slide()
 
 
 func on_triggered() -> void:
+	print("triggered")
+	state_chart.send_event("toFollow")
+
+
+func get_targetname() -> String:
+	return triggerable.targetname if triggerable else ""
+
+
+func on_trigger(player) -> void:
 	state_chart.send_event("toFollow")
 
 
@@ -45,11 +56,13 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity.x = safe_velocity.x
 	velocity.z = safe_velocity.z
 
+
 func _on_follow_state_processing(_delta: float) -> void:
 	if not target:
 		return
 
 	nav_agent.target_position = target.global_position
+
 
 func _on_follow_state_physics_processing(delta: float) -> void:
 	if not target:

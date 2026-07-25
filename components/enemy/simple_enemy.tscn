@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="3_2206g"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="4_idoiq"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="5_gocr1"]
+[ext_resource type="Script" uid="uid://he2v7enf634i" path="res://components/world/trigger/triggerable_component.gd" id="8_idoiq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_amps8"]
 radius = 5.0
@@ -108,6 +109,10 @@ script = ExtResource("5_gocr1")
 to = NodePath("../FollowState")
 event = &"toFollow"
 delay_in_seconds = "0.0"
+
+[node name="TriggerableComponent" type="Node" parent="." unique_id=1783257305]
+script = ExtResource("8_idoiq")
+targetname = "enemy1"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/FollowState" to="." method="_on_follow_state_physics_processing"]

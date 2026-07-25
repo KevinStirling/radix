@@ -18,4 +18,3 @@ class_property_descriptions = Dictionary[String, Variant]({
 "_phong_angle": "Phong smoothing angle"
 })
 meta_properties = Dictionary[String, Variant]({})
-node_groups = null

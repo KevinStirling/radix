@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDBaseClass" format=3 uid="uid://cr05xleer03q8"]
+
+[ext_resource type="Script" uid="uid://ck575aqs1sbrb" path="res://addons/func_godot/src/fgd/func_godot_fgd_base_class.gd" id="1_5k4m2"]
+
+[resource]
+script = ExtResource("1_5k4m2")
+classname = "Target"
+class_properties = Dictionary[String, Variant]({
+"target": NodePath(""),
+"targetfunc": ""
+})
+class_property_descriptions = Dictionary[String, Variant]({
+"target": "Entity group to call the trigger function on when this entity is triggered",
+"targetfunc": "Function to call on target entities. Does not accept arguments."
+})
+metadata/_custom_type_script = "uid://ck575aqs1sbrb"
