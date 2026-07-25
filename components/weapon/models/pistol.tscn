@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://jkgr06xn6lti"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_q0ce7"]
+[ext_resource type="PackedScene" uid="uid://8xre35tfaauf" path="res://components/weapon/models/test_pistol.glb" id="1_8gmu8"]
 
-[node name="Pistol" type="MeshInstance3D" unique_id=1866055868]
-transform = Transform3D(0.157, 0, 0, 0, 0.155, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_q0ce7")
+[node name="Pistol" type="Node3D" unique_id=1629468998]
+
+[node name="test_pistol" parent="." unique_id=1188367831 instance=ExtResource("1_8gmu8")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.6107825, -1.5220337, 0.5783922)

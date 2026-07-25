@@ -1,14 +1,26 @@
 class_name WeaponController
 extends Node
 
+@export var player: CharacterBody3D
 @export var camera: Camera3D
 @export var weapon_model_parent: Node3D
 @export var weapon_state_chart: StateChart
+@export_group("Idle Sway")
+@export var idle_sway_frequency: float = 0.8
+@export var idle_sway_amplitude: Vector2 = Vector2(0.03, 0.02)
+@export var idle_sway_stiffness: float = 20.0
+@export var idle_sway_damping: float = 10.0
 
 var current_weapon_model: Node3D
 var fire_rate_timer: float = 0.0
 var can_fire_next: bool = true
 var current_weapon: Weapon
+var base_weapon_position: Vector3
+var idle_time: float = 0.0
+var _idle_x: float = 0.0
+var _idle_y: float = 0.0
+var _idle_x_vel: float = 0.0
+var _idle_y_vel: float = 0.0
 
 
 func _ready():
@@ -22,6 +34,8 @@ func _process(delta: float) -> void:
 		if fire_rate_timer <= 0:
 			can_fire_next = true
 
+	_update_idle_sway(delta)
+
 
 func spawn_weapon_model():
 	if current_weapon_model:
@@ -31,6 +45,9 @@ func spawn_weapon_model():
 		current_weapon_model = current_weapon.weapon_model.instantiate()
 		weapon_model_parent.add_child(current_weapon_model)
 		current_weapon_model.position = current_weapon.weapon_position
+
+		# store for offset animations
+		base_weapon_position = current_weapon.weapon_position
 
 
 func can_fire() -> bool:
@@ -173,3 +190,47 @@ func _spawn_projectile() -> void:
 
 	# setup projectile
 	projectile.setup(velocity, current_weapon.damage)
+
+
+func _update_idle_sway(delta: float) -> void:
+	if not current_weapon_model:
+		return
+	# increment time
+	idle_time += delta
+
+	var speed = Vector2(player.velocity.x, player.velocity.y).length()
+	var target_x := 0.0
+	var target_y := 0.0
+
+	if speed < 0.1:
+		# calculate sine wave targets (figure-8 pattern)
+		target_x = sin(idle_time * idle_sway_frequency) * idle_sway_amplitude.x
+		# 0.618 used as "golden ratio" to prevent animation from lining up with the x
+		target_y = sin(idle_time * idle_sway_frequency * 0.618) * idle_sway_amplitude.y
+
+	# apply spring to x axis
+	var result_x = SpringUtil.apply(
+		_idle_x,
+		_idle_x_vel,
+		target_x,
+		idle_sway_stiffness,
+		idle_sway_damping,
+		delta,
+	)
+	_idle_x = result_x.x
+	_idle_x_vel = result_x.y
+
+	var result_y = SpringUtil.apply(
+		_idle_y,
+		_idle_y_vel,
+		target_y,
+		idle_sway_stiffness,
+		idle_sway_damping,
+		delta,
+	)
+	_idle_y = result_y.y
+	_idle_y_vel = result_y.y
+
+	# apply offset to weapon
+	var idle_offset = Vector3(_idle_x, _idle_y, 0.0)
+	current_weapon_model.position = base_weapon_position + idle_offset

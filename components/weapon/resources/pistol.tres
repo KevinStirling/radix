@@ -12,4 +12,5 @@ max_range = 50.0
 accuracy = 70
 weapon_model = ExtResource("2_p418k")
 projectile_scene = ExtResource("1_ka2gl")
+weapon_position = Vector3(0.5, -0.5, -1)
 metadata/_custom_type_script = "uid://coqlycpydmk2d"
