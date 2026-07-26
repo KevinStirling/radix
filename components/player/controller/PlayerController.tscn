@@ -133,6 +133,11 @@ player = NodePath("../..")
 camera = NodePath("../../CameraController/Camera3D")
 weapon_model_parent = NodePath("../../CameraController/Camera3D")
 weapon_state_chart = NodePath("../../WeaponStateChart")
+look_lag_divisor = 50.0
+look_lag_rot_max = 4.0
+look_lag_pos_scale = 0.3
+strafe_tilt_max = 0.04
+recoil_pitch_max = 10.0
 
 [node name="StateChart" type="Node" parent="." unique_id=804123615]
 script = ExtResource("4_xn6ov")

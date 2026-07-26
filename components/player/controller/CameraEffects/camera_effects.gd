@@ -32,7 +32,10 @@ const MAX_SCREEN_SHAKE: float = 0.5
 @export_subgroup("Damage Kick")
 @export var damage_time: float = 0.3
 @export_subgroup("Weapon Kick")
-@export var weapon_decay: float = 0.5
+# @export var weapon_decay: float = 0.5 DEPRECATED
+@export var recoil_cam_stiffness: float = 80.0
+@export var recoil_cam_damping: float = 10.0
+@export var recoil_cam_max: float = 60.0
 @export var weapon_kick_pitch_limit: float = 0.2
 @export_subgroup("Headbob")
 @export_range(0.0, 0.1, 0.001) var bob_pitch: float = 0.05
@@ -45,7 +48,9 @@ var _fall_timer: float = 0.0
 var _damage_pitch: float = 0.0
 var _damage_roll: float = 0.0
 var _damage_timer: float = 0.0
-var _weapon_kick_angles: Vector3 = Vector3.ZERO
+# var _weapon_kick_angles: Vector3 = Vector3.ZERO DEPRECATED
+var _recoil_angles: Vector3 = Vector3.ZERO
+var _recoil_vel: Vector3 = Vector3.ZERO
 var _screen_shake_tween: Tween
 var _step_timer: float = 0.0
 
@@ -119,9 +124,15 @@ func calculate_view_offset(delta):
 		angles.z += damage_ratio * _damage_roll
 
 	if enable_weapon_kick:
-		_weapon_kick_angles = _weapon_kick_angles.move_toward(Vector3.ZERO, weapon_decay * delta)
-		_weapon_kick_angles.x = clampf(_weapon_kick_angles.x, 0.0, weapon_kick_pitch_limit)
-		angles += _weapon_kick_angles
+		# clamp delta to a min value to saftey
+		var d = min(delta, 0.05)
+		var angle_max = deg_to_rad(recoil_cam_max)
+		# iterate over each float in Vector3
+		for axis in 3:
+			var r = SpringUtil.apply(_recoil_angles[axis], _recoil_vel[axis], 0.0, recoil_cam_stiffness, recoil_cam_damping, delta)
+			_recoil_angles[axis] = clamp(r.x, -angle_max, angle_max)
+			_recoil_vel[axis] = r.y
+		angles += _recoil_angles
 
 	if enable_head_bob:
 		var pitch_delta = bob_sin * deg_to_rad(bob_pitch) * speed
@@ -163,9 +174,12 @@ func add_damage_kick(pitch: float, roll: float, source: Vector3):
 ## generally recommended to keep the yaw and roll values low
 ## pitch will be auto limitted by the weapon_kick_pitch_limit
 func add_weapon_kick(pitch: float, yaw: float, roll: float):
-	_weapon_kick_angles.x += deg_to_rad(pitch)
-	_weapon_kick_angles.y += deg_to_rad(randf_range(-yaw, yaw))
-	_weapon_kick_angles.z += deg_to_rad(randf_range(-roll, roll))
+	# _weapon_kick_angles.x += deg_to_rad(pitch)
+	# _weapon_kick_angles.y += deg_to_rad(randf_range(-yaw, yaw))
+	# _weapon_kick_angles.z += deg_to_rad(randf_range(-roll, roll))
+	_recoil_angles.x += deg_to_rad(pitch)
+	_recoil_angles.y += deg_to_rad(randf_range(-yaw, yaw))
+	_recoil_angles.z += deg_to_rad(randf_range(-roll, roll))
 
 
 func add_screen_shake(amount: float, seconds: float) -> void:
@@ -181,3 +195,7 @@ func update_screen_shake(alpha: float, amount: float) -> void:
 	var current_shake_amount = amount * (1.0 - alpha)
 	h_offset = randf_range(-current_shake_amount, current_shake_amount)
 	v_offset = randf_range(-current_shake_amount, current_shake_amount)
+
+
+func get_bob_phase() -> float:
+	return _step_timer

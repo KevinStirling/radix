@@ -387,7 +387,7 @@
 // entity 4
 {
 "classname" "light_omni"
-"origin" "616 -712 152"
+"origin" "184 -712 152"
 }
 // entity 5
 {
@@ -768,7 +768,7 @@
 // entity 34
 {
 "classname" "light_omni"
-"origin" "616 -120 152"
+"origin" "184 -120 152"
 }
 // entity 35
 {

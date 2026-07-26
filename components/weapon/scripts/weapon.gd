@@ -15,3 +15,9 @@ extends Resource
 @export var pellet_count: int = 1
 @export var spread_angle: float = 0.0
 @export var weapon_position: Vector3 = Vector3(0.2, -0.2, -0.3)
+@export_group("Recoil")
+@export var recoil_cam_pitch: float = 1.0
+@export var recoil_cam_yaw: float = 0.25
+@export var recoil_cam_roll: float = 0.0
+@export var recoil_model_kickback: float = 0.02
+@export var recoil_model_rise: float = 8.0
