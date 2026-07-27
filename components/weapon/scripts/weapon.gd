@@ -21,3 +21,5 @@ extends Resource
 @export var recoil_cam_roll: float = 0.0
 @export var recoil_model_kickback: float = 0.02
 @export var recoil_model_rise: float = 8.0
+@export_group("Vertical lag")
+@export var vertical_lag_amount: float = 2.0

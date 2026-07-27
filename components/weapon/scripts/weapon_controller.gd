@@ -3,6 +3,7 @@ extends Node
 
 @export var player: CharacterBody3D
 @export var camera: CameraEffects
+@export var camera_rig: CameraController
 @export var weapon_model_parent: Node3D
 @export var weapon_state_chart: StateChart
 @export_group("Visual Juice")
@@ -10,6 +11,7 @@ extends Node
 @export var look_sway: bool = true
 @export var strafe_tilt: bool = true
 @export var weapon_bob: bool = true
+@export var vertical_lag: bool = true
 @export_group("Idle Sway")
 @export var idle_sway_frequency: float = 0.8
 @export var idle_sway_amplitude: Vector2 = Vector2(0.03, 0.02)
@@ -35,6 +37,12 @@ extends Node
 @export var recoil_model_damping: float = 11.0
 @export var recoil_model_max: float = 0.15
 @export var recoil_pitch_max: float = 0.4
+@export_group("Vertical lag")
+@export var vlag_stiffness: float = 60.0
+@export var vlag_damping: float = 12.0
+@export var vlag_deadzone: float = 0.05
+@export var vlag_max: float = 0.1
+@export var vlag_velo_max: float = 10.0
 
 var current_weapon_model: Node3D
 var fire_rate_timer: float = 0.0
@@ -64,6 +72,11 @@ var _recoil_z: float = 0.0
 var _recoil_z_vel: float = 0.0
 var _recoil_pitch: float = 0.0
 var _recoil_pitch_vel: float = 0.0
+# Lag
+var _vlag_y: float = 0.0
+var _vlag_y_vel: float = 0.0
+var _prev_camera_y: float = 0.0
+var _vlag_seeded: bool = false
 
 
 func _ready():
@@ -162,6 +175,7 @@ func _apply_offsets(delta: float) -> void:
 	var idle_offset = _update_idle_sway(delta) if idle_sway else Vector3.ZERO
 	var look_offset = _update_look_sway(delta) if look_sway else Vector3.ZERO
 	var bob_offset = _update_bob(delta) if weapon_bob else Vector3.ZERO
+	var vlag_offset = _update_vertical_lag(delta) if vertical_lag else Vector3.ZERO
 
 	var tilt = Vector3(0.0, 0.0, _update_tilt(delta) if strafe_tilt else 0.0)
 	var recoil_pos = Vector3.ZERO
@@ -170,7 +184,7 @@ func _apply_offsets(delta: float) -> void:
 		recoil_pos = _update_recoil(delta)
 		recoil_pitch = _recoil_pitch
 
-	current_weapon_model.position = base_weapon_position + idle_offset + look_offset + bob_offset + recoil_pos
+	current_weapon_model.position = base_weapon_position + idle_offset + look_offset + bob_offset + recoil_pos + vlag_offset
 	current_weapon_model.rotation = base_weapon_rotation + tilt + Vector3(recoil_pitch, 0.0, 0.0)
 
 
@@ -435,3 +449,32 @@ func _update_recoil(delta: float) -> Vector3:
 	_recoil_pitch_vel = rp.y
 
 	return Vector3(0.0, 0.0, _recoil_z)
+
+
+func _update_vertical_lag(delta: float) -> Vector3:
+	if not camera_rig or not current_weapon_model:
+		return Vector3.ZERO
+
+	var cam_y = camera_rig.global_position.y
+
+	if not _vlag_seeded:
+		# prevent unwanted camera jitter on player spawn
+		_prev_camera_y = cam_y
+		_vlag_seeded = true
+		return Vector3.ZERO
+
+	var cam_vel_y = (cam_y - _prev_camera_y) / delta
+	_prev_camera_y = cam_y
+
+	cam_vel_y = clamp(cam_vel_y, -vlag_max, vlag_max)
+	if abs(cam_vel_y) < vlag_deadzone:
+		# if cam_vel_y is inside deadzone, apply no animation
+		cam_vel_y = 0.0
+
+	# set the target to negative of the cam_velo for the "lag behind" effect
+	var target_y = -cam_vel_y * current_weapon.vertical_lag_amount
+	var result = SpringUtil.apply(_vlag_y, _vlag_y_vel, target_y, vlag_stiffness, vlag_damping, delta)
+	_vlag_y = clamp(result.x, -vlag_max, vlag_max)
+	_vlag_y_vel = result.y
+
+	return Vector3(0.0, _vlag_y, 0.0)
