@@ -1,0 +1,28 @@
+[gd_resource type="Environment" format=3 uid="uid://bkl6luaebomcl"]
+
+[ext_resource type="Texture2D" uid="uid://dkmp7a57x60xm" path="res://assets/skys/skybox_plain_emx_6.png" id="1_ghf3b"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s0gaa"]
+panorama = ExtResource("1_ghf3b")
+
+[sub_resource type="Sky" id="Sky_diar4"]
+sky_material = SubResource("PanoramaSkyMaterial_s0gaa")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_diar4")
+ambient_light_source = 2
+ambient_light_color = Color(0.038397226, 0.03839715, 0.03839716, 1)
+ambient_light_sky_contribution = 0.5
+reflected_light_source = 2
+tonemap_mode = 1
+ssao_enabled = true
+ssil_enabled = true
+ssil_intensity = 0.5
+glow_enabled = true
+glow_strength = 1.4
+glow_bloom = 0.3
+fog_mode = 1
+fog_density = 0.4
+volumetric_fog_density = 0.03
+volumetric_fog_gi_inject = 2.0

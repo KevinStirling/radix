@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqjm7yndv34tq"
-path.s3tc="res://.godot/imported/wall_4.png-e547dfa8ca2d5835fba7ec71b7af1815.s3tc.ctex"
+uid="uid://dkmp7a57x60xm"
+path.s3tc="res://.godot/imported/skybox_plain_emx_6.png-fbe458b349661df9f2d9d12974c6b1de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://trenchbroom/textures/wall/wall_4.png"
-dest_files=["res://.godot/imported/wall_4.png-e547dfa8ca2d5835fba7ec71b7af1815.s3tc.ctex"]
+source_file="res://assets/skys/skybox_plain_emx_6.png"
+dest_files=["res://.godot/imported/skybox_plain_emx_6.png-fbe458b349661df9f2d9d12974c6b1de.s3tc.ctex"]
 
 [params]
 

@@ -85,6 +85,8 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	if not current_weapon_model:
+		return
 	if fire_rate_timer > 0:
 		fire_rate_timer -= delta
 		if fire_rate_timer <= 0:
@@ -166,6 +168,8 @@ func switch_weapon(weapon_data: WeaponData) -> void:
 
 
 func has_ammo() -> bool:
+	if not current_weapon_model:
+		return false
 	# var weapon_data = Managers.weapon_manager.weapons[Managers.weapon_manager.current_slot]
 	return Managers.weapon_manager.get_current_ammo() > 0
 

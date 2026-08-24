@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dfva5sq0dpfap"
+path="res://.godot/imported/tower.map-9ea23bcd002896e6f7c9f84552e75c5e.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/tower.map"
+dest_files=["res://.godot/imported/tower.map-9ea23bcd002896e6f7c9f84552e75c5e.tres"]
+
+[params]
+
